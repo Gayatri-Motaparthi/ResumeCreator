@@ -1,2 +1,1 @@
-email : test@gmail.com
-password: test
+ATS-Friendly Resume Creator Using AI
