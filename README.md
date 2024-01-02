@@ -1,1 +1,2 @@
-# ATS-FriendlyResumeCreator
+email : test@gmail.com
+password: test

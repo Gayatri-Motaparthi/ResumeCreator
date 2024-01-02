@@ -1,0 +1,130 @@
+<%- include('layout') %>
+
+    <body>
+        <main>
+
+
+            <div class="card" value="addEducation">
+                <div class="card-content" value="addEducation">
+                    <h3>Education</h3>
+                    <p1>Tell us about your education</p1>
+                    <br>
+                    <p2>Include every school, even if you are a current student or did not graduate</p2>
+                    <br>
+                    <br>
+                    <p3>
+                      School Name
+                      <br>
+                        <input type="text" name="SchoolName" required>
+                        <br><br>
+                        Degree
+                        <input type="text" name="Degree" required>
+                        <br>
+                        <br>
+                        Field of Study
+                        <br>
+                        <input type="text" name="FieldOfStudy" required>
+                        <br><br>
+
+                        <p6>Country</p6>
+                        <p7>City</p7>
+                        <br>
+                        <div class="flex-container">
+                        <input type="text" name="Country" required>
+                        <input type="text" name="City" required>
+
+                        </div>
+                        <br>
+                        
+                
+
+                        <p8>Start Date</p8>
+                        <p9>End Date</p9>
+                        <br>
+                        <div class="flex-item">
+                            <p10>
+                                <select id="monthsSD" onclick="generateMonthsSD()" name="StartDate" required></select>
+
+                            </p10>
+                            <p11>
+                                <select id="yearsSD" onclick="generateYearsSD()" name="StartDate" required></select>
+                            </p11>
+
+                            <p12>
+                                <select id="monthsED" onclick="generateMonthsED()" name="EndDate" required></select>
+
+                            </p12>
+                            <p13>
+                                <select id="yearsED" onclick="generateYearsED()" name="EndDate" required></select>
+                            </p13>
+                        </div>
+                        <br>
+                        Achievements
+                        <br>
+                        <input type="text" name="Achievements" required>
+
+
+
+                    </p3>
+                    <br><br><br>
+                    <button type="button" value="next" class="button">Next</button>
+                </div>
+            </div>
+
+
+
+        </main>
+    </body>
+    <script defer>
+
+        function generateMonthsSD() {
+            const monthsSelect = document.getElementById('monthsSD') || document.getElementById('monthsED');
+
+            for (let i = 1; i <= 12; i++) {
+                const monthOption = document.createElement('option');
+                const monthValue = i < 10 ? '0' + i : '' + i;
+                monthOption.value = monthValue;
+                monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
+                monthsSelect.appendChild(monthOption);
+            }
+        }
+        function generateMonthsED() {
+            const monthsSelect = document.getElementById('monthsED');
+
+            for (let i = 1; i <= 12; i++) {
+                const monthOption = document.createElement('option');
+                const monthValue = i < 10 ? '0' + i : '' + i;
+                monthOption.value = monthValue;
+                monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
+                monthsSelect.appendChild(monthOption);
+            }
+        }
+
+
+
+        function generateYearsSD() {
+            const yearsSelect = document.getElementById('yearsSD');
+
+            for (let year = 2024; year >= 1950; year--) {
+                const yearOption = document.createElement('option');
+                yearOption.value = year;
+                yearOption.text = year;
+                yearsSelect.appendChild(yearOption);
+            }
+        }
+        function generateYearsED() {
+            const yearsSelect = document.getElementById('yearsED');
+
+            for (let year = 2024; year >= 1950; year--) {
+                const yearOption = document.createElement('option');
+                yearOption.value = year;
+                yearOption.text = year;
+                yearsSelect.appendChild(yearOption);
+            }
+        }
+
+
+    </script>
+
+
+    </script>

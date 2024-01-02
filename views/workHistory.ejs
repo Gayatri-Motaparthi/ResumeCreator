@@ -1,0 +1,39 @@
+<%- include('layout',{theme}) %>
+
+
+    <body>
+        <main>
+        
+            <form action = "/workHistory" method = "POST">
+            <div class="card">
+                <div class="card-content" value="profile">
+                    <h3>Experience</h3>
+                    <p1>Work History</p1>
+                    <br>
+                    <p2>Add your most recent job and previous jobs </p2>
+                    <br>
+                    <br>
+                
+                    <button type="button" onclick="addExperience()" value="Add" class="button">Add New</button>
+
+                    <br>
+                    <button type="button" onclick= "educationHistory()" value="next" class="button">Next</button>
+                </div>
+            </div>
+            </form>
+
+
+
+        </main>
+    </body>
+    <script defer>
+        function addExperience() {
+            window.location.href = "/addExperience";
+        }
+
+        function educationHistory() {
+                window.location.href = "/educationHistory";
+            }
+
+
+    </script>

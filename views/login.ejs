@@ -1,0 +1,79 @@
+<%- include('layout') %>
+
+
+    <main>
+        <form action="/login" method="post">
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 250px;">
+                Email-ID</p>
+            <div id="email"><input type="text" name="em" required></div>
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+               
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0px -1px mediumpurple,
+                0px 3px mediumpurple;
+            position: fixed;
+            left: 560px;
+            top: 360px;"> Password</p>
+            <p>
+            <div id="password"><input type="password" name="p" required></p>
+            </div>
+
+            <div id="errorMessageContainer">
+            </div>
+
+            <p><button id="logInButton" type="submit" value="li" class="button">
+                    Log In</button></p>
+
+            <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+            </p>
+        </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer>
+        function goBack() {
+            window.location.href = "/preLogin";
+        }
+
+        $(document).ready(function () {
+
+
+            $("#logInButton").on("click", function (event) {
+                event.preventDefault();
+
+                var email = $("input[name='em']").val();
+                var password = $("input[name='p']").val();
+
+                // Make an AJAX POST request to /signup
+                $.post("/login", { em: email, p: password })
+                    .done(function (response) {
+                        // Handle the response here
+                        if (response.error) {
+                            // Display error message in the HTML
+                            console.log(response.error);
+                            $("#errorMessageContainer").text(response.error);
+
+                        } else if (response.success) {
+                            // Redirect to homepage on success
+                            window.location.href = "/homepage";
+                        }
+                    })
+                    .fail(function (error) {
+                        console.error(error);
+                    });
+            });
+        });
+
+
+    </script>

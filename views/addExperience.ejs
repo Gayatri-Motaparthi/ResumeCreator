@@ -1,0 +1,130 @@
+<%- include('layout', {theme}) %>
+
+    <body>
+        <main>
+            
+            <form action = "/addExperience" method = "POST">
+            <div class="card" value = "addExperience">
+                <div class="card-content" value="addExperience">
+                    <h3>Experience</h3>
+                    <p1>Tell us where you worked</p1>
+                    <br>
+                    <p2>Let hiring managers know where you worked and what you accomplished</p2>
+                    <br>
+                    <br>
+                    <p3>
+                        <p4>Job Title</p4><p5>Employer</p5>
+                        <br>
+                        <div class="flex-container">
+                    
+                            <input type="text" name="JobTitle" required>
+                    
+                            <input type="text" name="Employer" required>
+                        </div>
+                        <br>
+                        Country
+                        <br>
+                        <input type="text" name="CountryExperience" required>
+                        <br>
+                        <br>
+                        <p6>State / Region</p6><p7>City</p7>
+                    <br>
+                        <div class="flex-container">
+                        
+                            <input type="text" name="State" required>
+                        
+                            <input type="text" name="City" required>
+                        </div>
+                        <br>
+                 
+                        <p8>Start Date</p8>
+                        <p9>End Date</p9>
+                        <br>
+                        <div class="flex-item">
+                            <p10>
+                                <select id="monthsSD" onclick="generateMonthsSD()" name="monthsSD" required></select>
+                                
+                            </p10>
+                            <p11>
+                                <select id="yearsSD" onclick="generateYearsSD()"name="yearsSD" required></select>
+                            </p11>
+
+                            <p12>
+                                <select id="monthsED" onclick="generateMonthsED()" name="monthsED" required></select>
+                            
+                            </p12>
+                            <p13>
+                                <select id="yearsED" onclick="generateYearsED()" name="yearsED" required></select>
+                            </p13>
+                        </div>
+                        <br>
+                    Achievements
+                        <br>
+                        <input type="text" name="Achievements" required>
+
+                      
+                       
+                    </p3>
+                    <br><br><br>
+                    <button type="submit" value="next" class="button">Next</button>
+                </div>
+            </div>
+
+            </form>
+
+
+
+        </main>
+    </body>
+    <script defer>
+
+         function generateMonthsSD() {
+                const monthsSelect = document.getElementById('monthsSD') || document.getElementById('monthsED') ;
+
+                for (let i = 1; i <= 12; i++) {
+                    const monthOption = document.createElement('option');
+                    const monthValue = i < 10 ? '0' + i : '' + i; 
+                    monthOption.value = monthValue;
+                    monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
+                    monthsSelect.appendChild(monthOption);
+                }
+            }
+             function generateMonthsED() {
+                    const monthsSelect =  document.getElementById('monthsED');
+
+                    for (let i = 1; i <= 12; i++) {
+                        const monthOption = document.createElement('option');
+                        const monthValue = i < 10 ? '0' + i : '' + i;
+                        monthOption.value = monthValue;
+                        monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
+                        monthsSelect.appendChild(monthOption);
+                    }
+                }
+
+         
+
+        function generateYearsSD() {
+                const yearsSelect = document.getElementById('yearsSD');
+
+                for (let year = 2024; year >= 1950; year--) {
+                    const yearOption = document.createElement('option');
+                    yearOption.value = year;
+                    yearOption.text = year;
+                    yearsSelect.appendChild(yearOption);
+                }
+            }
+            function generateYearsED() {
+                    const yearsSelect = document.getElementById('yearsED');
+
+                    for (let year = 2024; year >= 1950; year--) {
+                        const yearOption = document.createElement('option');
+                        yearOption.value = year;
+                        yearOption.text = year;
+                        yearsSelect.appendChild(yearOption);
+                    }
+                }
+
+          
+        </script>
+
+

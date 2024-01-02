@@ -1,0 +1,115 @@
+<%- include('layout', {theme}) %>
+
+
+
+    <main>
+        <form name="signUp" action="/signup" method="post">
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 140px;">
+                Name</p>
+            <div id="name"><input type="text" name="name" required></div>
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 250px;">
+                Email-ID</p>
+            <div id="email"></div><input type="text" name="em" required>
+            </div>
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0px -1px mediumpurple,
+                0px 3px mediumpurple;
+            position: fixed;
+            left: 560px;
+            top: 360px;"> Password</p>
+            <p>
+            <div id="password"><input type="password" name="p" required></div>
+            </p>
+
+            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                background-color: <%=theme==='Light' ? 'white': 'black' %>;
+        font-weight: bold;
+        font-size: 20px;
+        text-shadow: 0px -1px mediumpurple,
+            0px 3px mediumpurple;
+        position: fixed;
+        left: 560px;
+        top: 470px;">
+                Confirm Password</p>
+            <div id="confirmPassword"><input type="password" name="cp" required></div>
+
+
+            <div id="errorMessageContainer">
+            </div>
+
+
+
+            <div id="signUpButton">
+                <p><button type="submit" value="su" class="button">Sign
+                        Up</button> </p>
+            </div>
+
+
+            <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+            </p>
+
+
+
+
+        </form>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer>
+        function goBack() {
+            window.location.href = "/preLogin";
+        }
+        $(document).ready(function () {
+
+
+            $("#signUpButton").on("click", function (event) {
+                event.preventDefault();
+
+                // Make an AJAX POST request to /signup
+                var name = $("input[name='name']").val();
+                var email = $("input[name='em']").val();
+                var password = $("input[name='p']").val();
+                var confirmPassword = $("input[name='cp']").val();
+
+                // Make an AJAX POST request to /signup
+                $.post("/signup", { name: name, em: email, p: password, cp: confirmPassword })
+                    .done(function (response) {
+                        // Handle the response here
+                        if (response.error) {
+                            // Display error message in the HTML
+                            console.log(response.error);
+                            $("#errorMessageContainer").text(response.error);
+
+                        } else if (response.success) {
+                            // Redirect to homepage on success
+                            window.location.href = "/homepage";
+                        }
+                    })
+                    .fail(function (error) {
+                        console.error(error);
+                    });
+            });
+        });
+
+
+    </script>

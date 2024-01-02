@@ -1,0 +1,27 @@
+<%- include('layout', { theme }) %>
+
+    <script>
+
+
+        console.log(localStorage.getItem("users"))
+
+
+    </script>
+
+
+    <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
+font-size: 35px;
+font-weight: bold;
+text-shadow: 0px -1px mediumpurple,
+    0px 4px mediumpurple;
+position: fixed;
+left: 630px;
+top: 300px;">Select Theme</p>
+
+    <form action="/" method="post">
+        <p><button type="submit" value="Light" name="theme" class="button">Light</button>
+        </p>
+        <p><button type="submit" value="Dark" name="theme" class="button">Dark</button></p>
+
+
+    </form>

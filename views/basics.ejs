@@ -1,0 +1,57 @@
+<%- include('layout', {theme}) %>
+
+
+    <body>
+        <main>
+            <form action = "/basics" method = "POST">
+            <div class="card">
+                <div class="card-content" value="basics">
+                    <h3>Basics</h3>
+                    <p1>More about you</p1>
+                    <br>
+                    <p2>We recommend including your address and phone number</p2>
+                    <br>
+                    <p3> <p4>City</p4><p5>Country</p5>
+                        <br>
+                        <div class="flex-container">
+                        
+                            <input type="text" name="City" required >
+                        
+                            <input type="text" name="Country" required>
+                        </div>
+
+                        <br>
+                
+                       
+                        <p6>ZIP / Postal Code</p6> <p7>Phone Number</p7>
+                        <div class="flex-container">
+                           
+                            <input type="number" name="ZIP" required min="1">
+                            
+                            <input type="number" name="PhoneNumber" required min="1">
+                        </div>
+                        <br>
+                        Tell us about your background
+                        <br>
+                        <input type="text" name="background" required>
+                        
+                    </p3>
+                    <br><br><br>
+                    <button type="submit" value="next" class="button">Next</button>
+                </div>
+            </div>
+
+            </form>
+
+
+
+        </main>
+    </body>
+    <script defer>
+        function logOut() {
+            window.location.href = "/logout";
+        }
+
+
+
+    </script>
