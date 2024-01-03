@@ -1,49 +1,67 @@
-<%- include('layout') %>
+<%- include('layout', {theme}) %>
+    <style>
+        body {
 
+            padding-top: 40px;
+            padding-bottom: 100px;
+            padding-left: 330px;
+            padding-right: 350px;
+            text-align: justify;
 
+        }
+    </style>
     <main>
-        <form action="/login" method="post">
-            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
-                
-                background-color: <%=theme==='Light' ? 'white': 'black' %>;
-        font-weight: bold;
-        font-size: 20px;
-        text-shadow: 0px -1px mediumpurple,
-            0px 3px mediumpurple;
-        position: fixed;
-        left: 560px;
-        top: 250px;">
-                Email-ID</p>
-            <div id="email"><input type="text" name="em" required></div>
-            <p style="color: <%=theme==='Light' ? 'black': 'white' %>;
-               
-                background-color: <%=theme==='Light' ? 'white': 'black' %>;
-            font-weight: bold;
-            font-size: 20px;
-            text-shadow: 0px -1px mediumpurple,
-                0px 3px mediumpurple;
-            position: fixed;
-            left: 560px;
-            top: 360px;"> Password</p>
-            <p>
-            <div id="password"><input type="password" name="p" required></p>
+        <form name="LogIn" action="/login" method="post">
+            <div class="card" value="LogIn">
+                <div class="card-content" value="LogIn">
+                    <h3>Log in to your account</h3>
+                    <br>
+                    <p1>
+                        Email-ID
+                        <br>
+                        <input type="text" name="em" required>
+                        <br>
+                        <br>
+                        Password
+              
+                        <br>
+                      
+                            <input type="password" name="p" required>
+                        <br>
+
+
+
+                    </p1>
+                    <br>
+                    <br>
+                    <button id = "logInButton" type="submit" value="LogIn" class="button">Log In</button>
+                    <div id="errorMessageContainer">
+                    </div>
+                    <br>
+
+                    <p4>Not registered? <a href="/signup" onclick="goToSignup()">Create an account</a></p4>
+
+                    <br>
+                    <br>
+                    <button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+
+
+
+                </div>
             </div>
-
-            <div id="errorMessageContainer">
-            </div>
-
-            <p><button id="logInButton" type="submit" value="li" class="button">
-                    Log In</button></p>
-
-            <p><button onclick=" goBack()" type="button" value="back" class="button">Back</button>
-            </p>
         </form>
+
+
+       
+
     </main>
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script defer>
-        function goBack() {
-            window.location.href = "/preLogin";
+        function goToSignup() {
+            window.location.href = "/signup";
         }
 
         $(document).ready(function () {

@@ -2,7 +2,7 @@
 
     <body>
         <main>
-
+<form action = "/addEducation" method = "POST">
 
             <div class="card" value="addEducation">
                 <div class="card-content" value="addEducation">
@@ -43,33 +43,34 @@
                         <br>
                         <div class="flex-item">
                             <p10>
-                                <select id="monthsSD" onclick="generateMonthsSD()" name="StartDate" required></select>
+                                <select id="monthsSD" onclick="generateMonthsSD()" name="monthsSD" required></select>
 
                             </p10>
                             <p11>
-                                <select id="yearsSD" onclick="generateYearsSD()" name="StartDate" required></select>
+                                <select id="yearsSD" onclick="generateYearsSD()" name="yearsSD" required></select>
                             </p11>
 
                             <p12>
-                                <select id="monthsED" onclick="generateMonthsED()" name="EndDate" required></select>
+                                <select id="monthsED" onclick="generateMonthsED()" name="monthsED" required></select>
 
                             </p12>
                             <p13>
-                                <select id="yearsED" onclick="generateYearsED()" name="EndDate" required></select>
+                                <select id="yearsED" onclick="generateYearsED()" name="yearsED" required></select>
                             </p13>
                         </div>
                         <br>
                         Achievements
                         <br>
-                        <input type="text" name="Achievements" required>
-
+                        <textarea value="Achievements" name="Achievements"></textarea>
 
 
                     </p3>
-                    <br><br><br>
-                    <button type="button" value="next" class="button">Next</button>
+                    <br><br>
+                    <button type="submit" value="next" class="button">Next</button>
                 </div>
             </div>
+
+            </form>
 
 
 

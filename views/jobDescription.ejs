@@ -1,0 +1,55 @@
+<%- include('layout', {theme}) %>
+
+    <main>
+        <form name="jobDescription" action="/jobDescription" method="post">
+            <div class="card" value="jobDescription">
+                <div class="card-content" value="jobDescription">
+                    <h3>Job Description</h3>
+
+
+                    <p1>
+                        
+                    To create a personalized resume for you, please provide a brief description of the job you are applying to
+                    </p1>
+                    <br>
+                    <textarea value = "jobDescription" name = "jobDescription" required></textarea>
+                 
+                    <br>
+                    <br>
+                    <button type="submit" value="next" class="button">Next</button>
+                    <br>
+                    <p4><a href="/download" onclick="goToDownload()">Skip for Now</a></p4>
+
+             
+                    <br>
+                    <button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+
+
+
+                </div>
+            </div>
+        </form>
+
+
+        <div id="errorMessageContainer">
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+    
+    <script defer>
+        function goToDownload() {
+            window.location.href = "/download";
+        }
+
+    </script>

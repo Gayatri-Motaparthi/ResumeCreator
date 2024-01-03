@@ -4,13 +4,16 @@ const app = express();
 const db = require('./database/db');
 const bodyParser = require("body-parser");
 
+
 app.use(express.static("public", { "Content-Type": "application/javascript" }));
 app.use(express.static(path.join(__dirname, 'routes')));
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());

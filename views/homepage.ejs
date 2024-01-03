@@ -1,0 +1,86 @@
+<%- include('layout', {theme}) %>
+<style>
+body {
+      color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: <%=theme==='Light' ? 'white': 'black' %>;
+     padding-top: 100px;
+      padding-bottom: 100px;
+      padding-left: 200px;
+      padding-right: 200px;
+      
+
+  }
+
+  
+
+
+
+  </style>
+    <body>
+            
+        <main>
+            <form action="/homepage" method="POST">
+
+                <div class="flex-container" value = "homepage">
+                    <div class="card" value="homepage1">
+                        <div class="card-content" value="homepage1">
+                    <div class="circle" name = "behindResumeDoodle">
+                        <img src="images/homepage_resume.png" alt="resume doodle" width="100" height="80">
+                    </div>
+                        
+                            <h3>Create your best resume</h3>
+                            <br>
+                            <p1>Build a free resume that gets you interviewed by employers</p1>
+                            <br><br><br>
+                            <button type="button" onclick = "buildResume()" value = "buildResume" class="button">Build My Resume</button>
+                        </div>
+                    </div>
+
+                    <div class="card" value="homepage2">
+                        <div class="card-content" value="homepage2">
+                            <div class="step1" value="step1">
+                                <div class="card-content" value="step1">
+                                   <p2> Enter the description of the job you are trying to apply</p2>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                                
+                            <div class="step2" value="step2">
+                                <div class="card-content" value="step2">
+                                    <p2> step2</p2>
+                                </div>
+
+                            </div>
+                            
+                            <br>
+                            <br>
+
+                            <div class="step3" value="step3">
+                                <div class="card-content" value="step3">
+                                    <p2> step3</p2>
+                                </div>
+                            
+                            </div>
+
+                           
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+
+        </main>
+    </body>
+    <script defer>
+
+        function buildResume(){
+            window.location.href = "/profile";
+        }
+
+    </script>
