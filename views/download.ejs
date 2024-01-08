@@ -5,16 +5,21 @@
         <main>
             <div class="card" value = "Download">
                 <div class="card-content" value="Download">
-                        <img src="images/ready_to_download.png" alt="files" width="80%" height="50%">
+                        <img src="images/ready_to_download.png" alt="files" width="80%" height="50%" >
                         <br><br>
                         <h3>You’ve finished creating your resume!</h3>
                         <br>
                         <p1>Save your resume to download, print it, and send it</p1>
                         <br>
                         <br>
-
-                        
-                        <button type="button" onclick="askToSignUp()" value="Save" class="button">Save And Next</button>
+                        <form action="/download" method="POST">
+                        <div class="flex-container" value="backAndNext">
+                            <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                           
+                                <button type="submit" value="Save" class="button">Save And Next</button>
+                            
+                        </div>
+                    </form>
                     </div>
             </div>
 
@@ -23,8 +28,9 @@
         </main>
     </body>
     <script defer>
-        function askToSignUp() {
-            window.location.href = "/signup";
+
+        function takeBack(){
+            window.location.href = "/jobDescription";
         }
 
 

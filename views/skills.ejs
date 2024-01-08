@@ -1,0 +1,46 @@
+<%- include('layout', {theme}) %>
+
+
+    <body>
+
+        <main>
+        <form name="skills" action="/skills" method="post">
+            <div class="card" value="skills">
+                <div class="card-content" value="skills">
+                    <h3>Skills</h3>
+        
+        
+                    <p1>
+        
+                       enter your skills to add onto the resume
+                    </p1>
+                    <br>
+                    <textarea value="skills" name="skills" required></textarea>
+        
+                    <br>
+                    <br>
+                    
+                    <div class="flex-container" value="backAndNext">
+                        <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                        <button type="submit" value="next" class="button">Next</button>
+                    </div>
+        
+                </div>
+            </div>
+        </form>
+        
+        
+        <div id="errorMessageContainer">
+        </div>
+
+        </main>
+    </body>
+    <script defer>
+
+        function takeBack(){
+            window.location.href = "/basics";
+        }
+
+
+
+    </script>

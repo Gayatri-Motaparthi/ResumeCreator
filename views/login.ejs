@@ -34,16 +34,14 @@
                     </p1>
                     <br>
                     <br>
+                    <br>
                     <button id = "logInButton" type="submit" value="LogIn" class="button">Log In</button>
                     <div id="errorMessageContainer">
                     </div>
                     <br>
-
+                    <br>
                     <p4>Not registered? <a href="/signup" onclick="goToSignup()">Create an account</a></p4>
 
-                    <br>
-                    <br>
-                    <button onclick=" goBack()" type="button" value="back" class="button">Back</button>
 
 
 
@@ -63,6 +61,8 @@
         function goToSignup() {
             window.location.href = "/signup";
         }
+
+ 
 
         $(document).ready(function () {
 
@@ -84,7 +84,7 @@
 
                         } else if (response.success) {
                             // Redirect to homepage on success
-                            window.location.href = "/homepage";
+                            window.location.href = "/resumePDF";
                         }
                     })
                     .fail(function (error) {

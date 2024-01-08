@@ -50,15 +50,10 @@
   }
 
 
-  .button:hover[value = "SignUpHomePage"] {
-    background-color:   palevioletred ;
-
-
+.button:hover[value = "next"]{
+    background-color: #8d5da7 ;
+    border-color: #8d5da7 ;
 }
-  .button:hover[value = "LogInHomePage"] {
- background-color:   palevioletred ;
-}
-
 
   input[name="in"] {
       color: <%=theme==='Light' ? 'black': 'white' %>;
@@ -108,7 +103,7 @@
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 8px 8px 8px mediumpurple; 
+  box-shadow: 8px 8px 8px Thistle; 
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
 }
@@ -246,14 +241,14 @@
 
 
  
-  .button[value="su"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
+  .button[value="SignUp"] {
+      color: <%=theme==='Light' ? 'white': 'black' %>;
     margin: auto;
     font-weight: bold;
-      background-color: white;
+      background-color: mediumpurple;
       height: 40px;
-      width: 200px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      width: 48%;
+      border:4px solid mediumpurple;
       border-radius: 10px;
       align-items: center;
   
@@ -261,11 +256,11 @@
 
   .button[value="back"] {
       color: <%=theme==='Light' ? 'black': 'white' %>;
-font-weight: bold;
-      background-color: mediumpurple;
+    font-weight: bold;
+      background-color: <%=theme==='Light' ? 'white': 'black' %>;
       height: 40px;
       width: 200px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border: 1px  solid <%=theme==='Light' ? 'black': 'white' %>;
       border-radius: 10px;
       align-items: center;
        margin: auto;
@@ -276,12 +271,11 @@ font-weight: bold;
 
 
   .button[value="logout"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
-      font-size: 16px;
+      color: <%=theme==='Light' ? 'white': 'black' %>;
       background-color: mediumpurple;
       height: 40px;
       width: 80px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border:4px solid mediumpurple;
       border-radius: 120px;
       position: fixed;
       right: 400px;
@@ -289,33 +283,6 @@ font-weight: bold;
       padding-top: 5px;
   }
 
- 
-
-   .button[value="SignUpHomePage"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
-      background-color: mediumpurple;
-      font-weight:bold;
-      height: 45px;
-      width: 100px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
-      border-radius: 10px;
-      position: fixed;
-      right: 180px;
-      top: 30px;
-  }
-
-  .button[value="LogInHomePage"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
-      background-color: mediumpurple;
-      font-weight:bold;
-      height: 45px;
-      width: 100px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
-      border-radius: 10px;
-      position: fixed;
-      right: 50px;
-      top: 30px;
-  }
 
   .card {
   width: 850px;
@@ -323,7 +290,7 @@ font-weight: bold;
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 8px 8px 8px mediumpurple; 
+  box-shadow: 8px 8px 8px Thistle; 
   top: 80px ;
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
@@ -401,12 +368,12 @@ input[name="FullName"] {
   }
 
    .button[value="next"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
+      color: <%=theme==='Light' ? 'white': 'black' %>;
       background-color: mediumpurple;
       font-weight:bold;
-      height: 45px;
-      width: 100px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+       height: 40px;
+      width: 24%;
+      border:4px solid mediumpurple;
       border-radius: 10px;
    
 
@@ -540,6 +507,10 @@ input[name="City"] {
     width: 48%;
 }
 
+.flex-container .button {
+    width: 48%;
+}
+
  .card-content[value= "basics"] p5 {
     margin-left: 383px; 
 }
@@ -548,12 +519,12 @@ input[name="City"] {
 }
 
 .button[value="Add"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
+      color: <%=theme==='Light' ? 'white': 'black' %>;
       background-color: mediumpurple;
       font-weight:bold;
-      height: 45px;
-      width: 100px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      height: 40px;
+      width: 48%;
+      border:4px solid mediumpurple;
       border-radius: 10px;
 
      margin: 0 auto;
@@ -567,11 +538,11 @@ input[name="City"] {
 
 .card[value = "addExperience"] {
   width: 850px;
-  height: 900px;
+  height: 930px;
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 8px 8px 8px  mediumpurple ; 
+  box-shadow: 8px 8px 8px  Thistle ; 
   top: 80px ;
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
@@ -796,11 +767,11 @@ input[name="State"] {
 
   .card[value = "addEducation"] {
   width: 850px;
-  height: 1000px;
+  height: 1050px;
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 8px 8px 8px  mediumpurple ; 
+  box-shadow: 8px 8px 8px  Thistle; 
   top: 80px ;
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
@@ -917,32 +888,30 @@ input[name="State"] {
     .card[value = "homepage1"] {
         width: 600px;
         height: 600px;
-        border: 1px solid <%=theme==='Light' ? 'black': 'white' %>;
+        border: 0px ;
         border-radius: 0px;
         overflow: hidden;
-   
-      
-         align-items: center;
+        align-items: center;
         justify-content: center;
         top: 30px ;
-      
-            color: <%=theme==='Light' ? 'black': 'white' %>;
-            background-color:  <%=theme==='Light' ? 'white': 'black' %>;
+        box-shadow: 0px 0px ;  
+        color: <%=theme==='Light' ? 'black': 'white' %>;
+        background-color:  <%=theme==='Light' ? 'white': 'black' %>;
         }
 
-    .card[value = "homepage2"] {
+.card[value = "homepage2"] {
         width: 600px;
         height: 600px;
-        border: 1px solid <%=theme==='Light' ? 'black': 'white' %>;
+        border: 0px ;
         border-radius: 0px;
         overflow: hidden;
-      
+      box-shadow: 0px 0px ;  
        top: 30px ;
             color: <%=theme==='Light' ? 'black': 'white' %>;
             background-color:  <%=theme==='Light' ? 'white': 'black' %>;
         }
 
-        .flex-container[value = "homepage"] .card {
+.flex-container[value = "homepage"] .card {
     width: 48%;
 }
 
@@ -959,45 +928,29 @@ input[name="State"] {
    
   
 }
-.circle[name = "behindResumeDoodle"] {
-        color: <%=theme==='Light' ? 'black': 'white' %>;
-            background-color: <%=theme==='Light' ? 'white': 'black' %>;;
-            width: 90px;
-            height: 90px;
-            border-radius: 100%; 
-            border: 3.0px solid <%=theme==='Light' ? 'black': 'white' %>;
-            margin: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: bold;
-            
-        }
 
     .card-content[value= "homepage1"] h3 {
         color: <%=theme==='Light' ? 'black': 'white' %>;
         font-weight: bold;
         font-size: 30px;
-        text-shadow: 
-            0px 2.5px mediumpurple;
+    
         padding-top: 16px;
 
     }
     
-    .card-content[value= "homepage1"] p1{
+.card-content[value= "homepage1"] p1{
   color:<%=theme==='Light' ? 'black': 'white' %>;
   
       font-size: 17px;
 }
 
  .button[value="buildResume"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
+      color: <%=theme==='Light' ? 'white': 'black' %>;
       background-color: mediumpurple;
       font-weight:bold;
       height: 45px;
       width: 200px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border:4px solid mediumpurple;
       border-radius: 10px;
      margin: 0 auto;
      display: block; 
@@ -1024,7 +977,8 @@ input[name="State"] {
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-    box-shadow: 6px 6px 8px  mediumpurple ;  ;
+    box-shadow: 6px 6px 8px  Thistle  ; 
+     
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
 }
@@ -1036,7 +990,7 @@ input[name="State"] {
   border-radius: 10px;
   overflow: hidden;
   
-    box-shadow: 6px 6px 8px  mediumpurple ; 
+    box-shadow: 6px 6px 8px  Thistle ; 
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
 }
@@ -1047,7 +1001,7 @@ input[name="State"] {
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-    box-shadow:6px 6px 8px mediumpurple ; 
+    box-shadow:6px 6px 8px Thistle; 
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
 }
@@ -1058,16 +1012,26 @@ input[name="State"] {
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 8px 8px 8px  mediumpurple ; 
+  box-shadow: 8px 8px 8px  Thistle ; 
   
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
 }
 
   .card-content[value = "Download"] {
-
-    align-items: center;
+    padding-top: 0px;
     justify-content: center;
+    text-align: center;
+  
+    display: flex;
+    flex-direction: column;
+   
+  
+}
+ .card-content[value = "Download"] img {
+
+   align-items: center;
+   justify-content: center;
     text-align: center;
   
     display: flex;
@@ -1077,17 +1041,12 @@ input[name="State"] {
 }
 
 .button[value="Save"] {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
+      color: <%=theme==='Light' ? 'white': 'black' %>;
       background-color: mediumpurple;
       font-weight:bold;
-      height: 45px;
-      width: 200px;
-      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      height: 40px;
+      border:4px solid mediumpurple;
       border-radius: 10px;
-
-     margin: 0 auto;
-     display: block; 
-      
   }
 
 
@@ -1191,8 +1150,8 @@ input[name="State"] {
       background-color: mediumpurple;
       font-weight: bold;
       height: 40px;
-      width: 200px;
-      border: 3px solid mediumpurple;
+      width: 48%;
+      border:4px solid mediumpurple;
       border-radius: 10px;
       align-items: center;
       margin: auto;
@@ -1205,13 +1164,41 @@ input[name="State"] {
 
 }
 
+ .card-content[value= "workHistory"] h3 {
+   color: <%=theme==='Light' ? 'black': 'white' %>;
+      font-weight: bold;
+      font-size: 33px;
+      text-shadow: 
+          0px 2px mediumpurple;
+    padding-top: 16px;
+
+    
+
+
+}
+
+.card-content[value= "workHistory"] p1 {
+   color: <%=theme==='Light' ? 'black': 'white' %>;
+     font-weight: bold;
+      font-size: 20px;
+
+
+}
+
+.card-content[value= "workHistory"] p1 {
+   color: <%=theme==='Light' ? 'black': 'white' %>;
+   
+      font-size: 20px;
+
+
+}
     .card[value = "experience"] {
-  width:200px;
+  width:100%px;
   height: 80px;
   border: 1.5px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 0px 0px  mediumpurple ; 
+  box-shadow: 0px 0px 0px Thistle; 
 
      color: <%=theme==='Light' ? 'black': 'white' %>;
     background-color:  <%=theme==='Light' ? 'white': 'black' %>;
@@ -1221,6 +1208,135 @@ input[name="State"] {
      display: flex;
   flex-wrap: wrap;
 }
+
+.card[value = "resume"]{
+     height:297mm;
+    width:210mm;
+  border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 8px 8px 8px Thistle; 
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+    background-color:  <%=theme==='Light' ? 'white': 'black' %>;
+     display: flex;
+    
+   
+}
+
+.card-content[value = "resume"]{
+    padding-top: 1.9cm;
+    padding-left:1.9cm;
+   padding-right: 1.32cm;
+    padding-bottom: 3.67cm;
+      display: flex;
+     flex-direction: column;
+}
+
+.card-content[value = "resume"] p1 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+      
+      font-size: 18pt;
+      align-items: center;
+      text-align: center;
+
+}
+
+.card-content[value = "resume"] p2 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+  
+      font-size:11pt;
+      align-items: center;
+      text-align: center;
+
+}
+
+.card-content[value = "resume"] p3 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+  
+      font-size:11pt;
+     
+      text-align: justify;
+
+}
+
+.card-content[value = "resume"] p4 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+  
+      font-size:14pt;
+
+}
+
+.card-content[value = "resume"] p5 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+  
+      font-size:12pt;
+}
+
+
+    .card-content[value= "skills"]{
+    display: flex;
+     flex-direction: column;
+
+}
+
+
+ .card-content[value= "skills"] h3 {
+   color: <%=theme==='Light' ? 'black': 'white' %>;
+      font-weight: bold;
+      font-size: 33px;
+      text-shadow: 
+          0px 2px mediumpurple;
+    padding-top: 16px;
+
+    
+
+
+}
+
+.card-content[value= "skills"] p1 {
+   color: <%=theme==='Light' ? 'black': 'white' %>;
+   
+      font-size: 20px;
+
+
+}
+
+
+  textarea[value = "skills"] {
+      color: <%=theme==='Light' ? 'black': 'white' %>;
+      font-size: 20px;
+      background-color: <%=theme==='Light' ? 'white': 'black' %>;
+      height: 350px;
+      width: 100%;
+      border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border-radius: 10px;
+      padding-left: 18px;
+      padding-right: 18px;
+
+  }
+
+  .flex-container[value = "backAndNext"] {
+    display : flex;
+    justify-content: space-between; 
+    
+}
+
+  .button[value="download"] {
+      color: <%=theme==='Light' ? 'white': 'black' %>;
+      background-color: mediumpurple;
+      font-weight:bold;
+       height: 40px;
+      width: 200px;
+      border:4px solid mediumpurple;
+      border-radius: 10px;
+        position: fixed;
+
+        top: 30px;
+        right: 40px;
+
+      
+  }
+
 
 
 
@@ -1234,13 +1350,6 @@ input[name="State"] {
     </nav>
 </header>
 <body>
-    <form action="/" method="post">
-        <p><button type="button" onclick="goToSignup()" value="SignUpHomePage" name="signup" class="button">Sign
-                Up</button></p>
-        <button type="button" onclick="goToLogin()" value="LogInHomePage" name="login" class="button">Log
-            In</button>
-    </form>
-    
 
     <!-- bootstrap JS CDN -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

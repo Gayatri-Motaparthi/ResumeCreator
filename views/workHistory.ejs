@@ -5,8 +5,8 @@
         <main>
         
             <form action = "/workHistory" method = "POST">
-            <div class="card">
-                <div class="card-content" value="workHistory">
+            <div class="card" style = "height: <%= 560 + (experiences.length * 90) %>px">
+                <div class="card-content" value="workHistory" >
                     <h3>Experience</h3>
                     <p1>Work History</p1>
                     <br>
@@ -16,7 +16,10 @@
                <div class = "flex-container" value = "experience">
                         <% experiences.forEach(function(experience) { %>
                             <div class="card" value = "experience">
-                                <p3><%= experience.jobTitle %></p3>
+                                <p3 style = "color: <%=theme==='Light' ? 'black': 'white' %>;
+                                font-weight: bold;
+                                font-size: 18px;">
+                                <%= experience.jobTitle %></p3>
                                 <p4><%= experience.employer%></p4>
                                 <p5><%=experience.startDate.month %> <%=experience.startDate.year %> - <%= experience.endDate.month %> <%= experience.endDate.year%></p5>
                             
@@ -30,11 +33,17 @@
                         
                     <br>
                     <br>
+                    <br><br>
                 
                     <button type="button" onclick="addExperience()" value="Add" class="button">Add New</button>
 
                     <br>
-                    <button type="button" onclick= "educationHistory()" value="next" class="button">Next</button>
+
+                    <div class="flex-container" value="backAndNext">
+                        <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                        <button id="nextButton" onclick= "educationHistory()" type="button" value="next" class="button">Next</button>
+                    </div>
+                   
                 </div>
             </div>
             </form>
@@ -51,6 +60,10 @@
         function educationHistory() {
                 window.location.href = "/educationHistory";
             }
+
+        function takeBack(){
+            window.location.href = "/skills";
+        }
 
 
     </script>

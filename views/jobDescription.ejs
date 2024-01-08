@@ -15,16 +15,17 @@
                     <textarea value = "jobDescription" name = "jobDescription" required></textarea>
                  
                     <br>
-                    <br>
-                    <button type="submit" value="next" class="button">Next</button>
+                 
+                    
                     <br>
                     <p4><a href="/download" onclick="goToDownload()">Skip for Now</a></p4>
 
-             
                     <br>
-                    <button onclick=" goBack()" type="button" value="back" class="button">Back</button>
-
-
+                    <br>
+                    <div class="flex-container" value="backAndNext">
+                        <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                        <button type="submit" value="next" class="button">Next</button>
+                    </div>
 
                 </div>
             </div>
@@ -34,22 +35,16 @@
         <div id="errorMessageContainer">
         </div>
 
-
-
-
-
-
-
-
-
-
-
     </main>
 
     
     <script defer>
         function goToDownload() {
             window.location.href = "/download";
+        }
+
+        function takeBack(){
+            window.location.href = "/educationHistory"
         }
 
     </script>

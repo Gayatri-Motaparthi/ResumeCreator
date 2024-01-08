@@ -37,7 +37,10 @@
                         
                     </p3>
                     <br><br><br>
-                    <button type="submit" value="next" class="button">Next</button>
+                    <div class="flex-container" value="backAndNext">
+                        <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                        <button id="nextButton" type="submit" value="next" class="button">Next</button>
+                    </div>
                 </div>
             </div>
 
@@ -48,8 +51,8 @@
         </main>
     </body>
     <script defer>
-        function logOut() {
-            window.location.href = "/logout";
+        function takeBack() {
+            window.location.href = "/profile";
         }
 
 

@@ -45,7 +45,7 @@
                 </p1>
 
 
-                <button id = "signUpButton" type="submit" value="su" class="button">Sign Up</button>
+                <button id = "signUpButton" type="submit" value="SignUp" class="button">Sign Up</button>
         
                 <div id="errorMessageContainer"></div><br>
            
@@ -53,7 +53,7 @@
 
                 <br>
 
-                <button onclick=" goBack()" type="button" value="back" class="button">Back</button>
+                <button style = "width:48%;" onclick=" takeBack()" type="button" value="back" class="button">Back</button>
 
 
    
@@ -70,6 +70,10 @@
         function goToLogin() {
                 window.location.href = "/login";
             }
+
+        function takeBack(){
+            window.location.href = "/download";
+        }
 
         $(document).ready(function () {
 
@@ -93,7 +97,7 @@
 
                         } else if (response.success) {
                             // Redirect to homepage on success
-                            window.location.href = "/homepage";
+                            window.location.href = "/resumePDF";
                         }
                     })
                     .fail(function (error) {

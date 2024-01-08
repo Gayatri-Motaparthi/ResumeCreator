@@ -1,0 +1,87 @@
+<%- include('layout', {theme}) %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src = "https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<title>HTML to Word</title>
+</head>
+
+<style>
+
+
+</style>
+
+    <body>
+
+        <main>
+           
+            <button onclick="downloadAsPDF()" class="button" value="download">Download</button>
+            <div class = "card" value = "resume">
+                <div id = "resume" class = "card-content" value = "resume">
+                   
+                    <p1><%=  profile.userName %></p1>
+                    <p2>
+                        <%= profile.emailID %>| <%= basics.phoneNumber %>
+                            <br>
+                            <%= basics.city %>, <%= basics.country %>, <%= basics.zip %>
+                                        </p2>
+                                        <br>
+                                        <p3>
+                                            <%= basics.background %>
+                                        </p3>
+                                        <br>
+
+                                                            <p4>Skills</p4>
+                                                            <%= skills.skills %>
+                                                                <br>
+                                                                <p5>Experience</p5>
+                                                                <p5>
+                                                                    <%= experience.jobTitle %>
+                                                                </p5>
+                                                                <p6>
+                                                                    <%= experience.startDate.month %>, <%= experience.startDate.year %> - <%=experience.endDate.month %>, <%= experience.endDate.year %>
+                                                                </p6>
+                                                                <p7>
+                                                                    <%= experience.employer %>, <%= experience.city %> , <%= experience.country %>
+                                                                </p7>
+                                                                <%= experience.achievements %>
+
+                                                                <p5>Education</p5>
+                                                                <p5>
+                                                                    <%= education.degree %> - <%= education.field %>
+                                                                   
+                                                                </p5>
+                                                                <p6>
+                                                                    <%= education.schoolName %>, <%= education.city %>
+                                                                     <br>
+                                                                     <%= education.country %> <%= education.startDate.month %>, <%= education.startDate.year %> - <%= education.endDate.month %>, <%=
+                                                                                    education.endDate.year %>
+                                                                </p6>
+                                                                <%= education.achievements %>
+                      
+                </div>
+           
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </main>
+    </body>
+    <script defer>
+
+      function downloadAsPDF() {
+             const element = document.getElementById("resume");
+          html2pdf()
+              .from(element)
+              .save();
+        }
+     
+    </script>

@@ -50,12 +50,13 @@
                             </p11>
 
                             <p12>
-                                <select id="monthsED" onclick="generateMonthsED()" name="monthsED" required></select>
+                                <select id="monthsED" onclick="generateMonthsED()" name="monthsED" ></select>
                             
                             </p12>
                             <p13>
-                                <select id="yearsED" onclick="generateYearsED()" name="yearsED" required></select>
+                                <select id="yearsED" onclick="generateYearsED()" name="yearsED" ></select>
                             </p13>
+                            <input type = "checkbox"> <p14 style ="font-weight: normal;" >I currently work in this role</p14>
                         </div>
                         <br>
                     Achievements
@@ -66,7 +67,10 @@
                        
                     </p3>
                     <br><br>
-                    <button type="submit" value="next" class="button">Next</button>
+                <div class="flex-container" value="backAndNext">
+                    <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                    <button id="nextButton" type="submit" value="next" class="button">Next</button>
+                </div>
                 </div>
             </div>
 
@@ -123,6 +127,10 @@
                         yearsSelect.appendChild(yearOption);
                     }
                 }
+
+            function takeBack(){
+                window.location.href = "/workHistory"
+            }
 
           
         </script>

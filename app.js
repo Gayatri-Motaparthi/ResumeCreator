@@ -3,7 +3,13 @@ const path = require("path");
 const app = express();
 const db = require('./database/db');
 const bodyParser = require("body-parser");
+const session = require('express-session');
 
+app.use(session({
+    secret: 'your-secret-key',
+    resave: true,
+    saveUninitialized: true,
+}));
 
 app.use(express.static("public", { "Content-Type": "application/javascript" }));
 app.use(express.static(path.join(__dirname, 'routes')));

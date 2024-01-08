@@ -57,6 +57,8 @@
                             <p13>
                                 <select id="yearsED" onclick="generateYearsED()" name="yearsED" required></select>
                             </p13>
+                            <input type="checkbox">
+                            <p14 style="font-weight: normal; margin-right: 200px;">I expect to graduate this date</p14>
                         </div>
                         <br>
                         Achievements
@@ -66,7 +68,10 @@
 
                     </p3>
                     <br><br>
-                    <button type="submit" value="next" class="button">Next</button>
+                    <div class="flex-container" value="backAndNext">
+                        <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                        <button id="nextButton" type="submit" value="next" class="button">Next</button>
+                    </div>
                 </div>
             </div>
 
@@ -116,7 +121,7 @@
         function generateYearsED() {
             const yearsSelect = document.getElementById('yearsED');
 
-            for (let year = 2024; year >= 1950; year--) {
+            for (let year = 2034; year >= 1950; year--) {
                 const yearOption = document.createElement('option');
                 yearOption.value = year;
                 yearOption.text = year;
@@ -124,6 +129,9 @@
             }
         }
 
+        function takeBack(){
+            window.location.href = "/educationHistory";
+        }
 
     </script>
 

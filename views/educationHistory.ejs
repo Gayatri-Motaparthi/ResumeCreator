@@ -5,7 +5,7 @@
         <main>
 
 
-            <div class="card">
+            <div class="card" style = "height: <%= 560 + (educationList.length * 90) %>px">
                 <div class="card-content" value="profile">
                     <h3>Education</h3>
                     <p1>Education History</p1>
@@ -13,10 +13,41 @@
                     <p2>Include every school, even if you are a current student or did not graduate </p2>
                     <br>
                     <br>
+                    <% if (educationList.length > 0) { %>
+                        <div class="flex-container" value="experience">
+                            <% educationList.forEach(function(education) { %>
+                                <div class="card" value="experience">
+                                    <p3 style="color: <%=theme==='Light' ? 'black': 'white' %>;
+                                                    font-weight: bold;
+                                                    font-size: 18px;">
+                                        <%= education.schoolName %>
+                                    </p3>
+                                    <p4>
+                                        <%= education.degree%> - <%= education.fieldOfStudy %>
+                                    </p4>
+                                    <p5>
+                                        <%=education.startDate.month %>
+                                            <%=education.startDate.year %> - <%= education.endDate.month %>
+                                                    <%= education.endDate.year%>
+                                    </p5>
+                    
+                                </div>
+                                <br>
+                    
+                                <% }); %>
+                    
+                        </div>
+                        <% } %>
+                        <br>
+                        <br>
+                        <br><br>
 
                     <button type="button" onclick="addEducation()" value="Add" class="button">Add New</button>
                     <br>
-                    <button type="button" onclick="goToJobDescription()" value="next" class="button">Next</button>
+                    <div class="flex-container" value="backAndNext">
+                        <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+                        <button id="nextButton" onclick="goToJobDescription()" type="button" value="next" class="button">Next</button>
+                    </div>
                 </div>
             </div>
 
@@ -31,6 +62,10 @@
 
         function goToJobDescription(){
             window.location.href = "/jobDescription";
+        }
+
+        function takeBack(){
+            window.location.href = "/workHistory";
         }
 
 
