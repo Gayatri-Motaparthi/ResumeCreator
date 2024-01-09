@@ -30,11 +30,12 @@
   }
 
   header {
-      color: <%=theme==='Light' ? 'black': 'white' %>;
-      font-weight: bold;
-      font-size: 35px;
-      text-shadow: 0px -1px mediumpurple,
-          0px 4px mediumpurple;
+      
+
+font-weight: bold;
+      font-size: 39px;
+      text-shadow: 3px 3px 3px mediumpurple;
+     
       position: fixed;
       left: 20px;
       top: 10px;
@@ -121,7 +122,7 @@
       font-weight: bold;
       font-size: 33px;
       text-shadow: 
-          0px 2px mediumpurple;
+          0px 2px 3px mediumpurple;
     padding-top: 16px;
     text-align:center;
     
@@ -310,7 +311,7 @@
       font-weight: bold;
       font-size: 50px;
       text-shadow: 
-          0px 2.8px mediumpurple;
+          0px 2.8px 3px mediumpurple;
     padding-top: 16px;
 
 }
@@ -392,7 +393,8 @@ input[name="FullName"] {
       font-weight: bold;
       font-size: 50px;
       text-shadow: 0px 0px mediumpurple,
-          0px 2.5px mediumpurple;
+          0px 2.5px 3px mediumpurple;
+          padding-top: 16px;
 
 }
 
@@ -581,7 +583,7 @@ input[name="JobTitle"] {
       font-weight: bold;
       font-size: 50px;
       text-shadow: 
-          0px 2.8px mediumpurple;
+          0px 2.8px 3px mediumpurple;
     padding-top: 16px;
 
 }
@@ -783,7 +785,7 @@ input[name="State"] {
       font-weight: bold;
       font-size: 50px;
       text-shadow: 
-          0px 2.8px mediumpurple;
+          0px 2.8px 3px mediumpurple;
     padding-top: 16px;
 
 }
@@ -974,7 +976,7 @@ input[name="State"] {
  .step1 {
   width:95%;
   height: 150px;
-  border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+  border: 2px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
     box-shadow: 6px 6px 8px  Thistle  ; 
@@ -986,7 +988,7 @@ input[name="State"] {
 .step2 {
   width:95%;
   height: 150px;
-  border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+  border: 2px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
   
@@ -998,7 +1000,7 @@ input[name="State"] {
 .step3 {
   width:95%;
   height: 150px;
-  border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
+  border: 2px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
     box-shadow:6px 6px 8px Thistle; 
@@ -1062,7 +1064,7 @@ input[name="State"] {
       font-weight: bold;
       font-size: 33px;
       text-shadow: 
-          0px 2px mediumpurple;
+          0px 2px 3px mediumpurple;
     padding-top: 16px;
 
     
@@ -1114,7 +1116,7 @@ input[name="State"] {
       font-weight: bold;
       font-size: 33px;
       text-shadow: 
-          0px 2px mediumpurple;
+          0px 2px 3px mediumpurple;
     padding-top: 16px;
     text-align:center;
     
@@ -1167,9 +1169,9 @@ input[name="State"] {
  .card-content[value= "workHistory"] h3 {
    color: <%=theme==='Light' ? 'black': 'white' %>;
       font-weight: bold;
-      font-size: 33px;
+      font-size: 50px;
       text-shadow: 
-          0px 2px mediumpurple;
+          0px 2px 3px mediumpurple;
     padding-top: 16px;
 
     
@@ -1283,9 +1285,9 @@ input[name="State"] {
  .card-content[value= "skills"] h3 {
    color: <%=theme==='Light' ? 'black': 'white' %>;
       font-weight: bold;
-      font-size: 33px;
+      font-size: 50px;
       text-shadow: 
-          0px 2px mediumpurple;
+          0px 2px 3px mediumpurple;
     padding-top: 16px;
 
     
@@ -1338,7 +1340,183 @@ input[name="State"] {
   }
 
 
+.button[value="backResumePDF"] {
+      color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: white;
+      font-weight:bold;
+       height: 40px;
+      width: 200px;
+      border:1px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border-radius: 10px;
+        position: fixed;
 
+        top: 80px;
+        right: 40px;
+
+      
+  }
+
+ 
+.templates{
+  width: 850px;
+  height: 650px;
+  border: 0px ;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px Thistle; 
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+    background-color:  <%=theme==='Light' ? 'white': 'black' %>;
+    align-items: center;
+    margin: auto;
+}
+
+ .flex-container[value = "templates"] {
+    padding-top: 150px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+
+    display: flex;
+    justify-content: space-between; 
+}
+.button[value="backTemplate" ]{
+  
+      color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: <%=theme==='Light' ? 'white': 'black' %>;
+      font-weight:bold;
+      height: 40px;
+      width: 210px;
+      border:1px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border-radius: 10px;
+     margin: 0 auto;
+     display: block; 
+     
+      
+ 
+}
+
+.flex-container[value = "buttonsTemplates"]{
+     display: flex;
+    justify-content: space-between; 
+}
+
+.button[value="classicProfessional" ]{
+  
+      color: <%=theme==='Light' ? 'white': 'black' %>;
+      background-color: mediumpurple;
+      font-weight:bold;
+      height: 40px;
+      width: 210px;
+      border:4px solid mediumpurple;
+      border-radius: 10px;
+     margin: 0 auto;
+     display: block; 
+     
+      
+ 
+}
+
+.button[value="modernProfessional" ]{
+  
+      color: <%=theme==='Light' ? 'white': 'black' %>;
+      background-color: mediumpurple;
+      font-weight:bold;
+      height: 40px;
+      width: 210px;
+      border:4px solid mediumpurple;
+      border-radius: 10px;
+     margin: 0 auto;
+     display: block; 
+      
+ 
+}
+.button[value="modernStudent" ]{
+  
+      color: <%=theme==='Light' ? 'white': 'black' %>;
+      background-color: mediumpurple;
+      font-weight:bold;
+      height: 40px;
+      width: 210px;
+      border:4px solid mediumpurple;
+      border-radius: 10px;
+     margin: 0 auto;
+     display: block; 
+}
+
+.button[value="backResumePDF"] {
+      color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: white;
+      font-weight:bold;
+       height: 40px;
+      width: 200px;
+      border:1px solid <%=theme==='Light' ? 'black': 'white' %>;
+      border-radius: 10px;
+        position: fixed;
+
+        top: 80px;
+        right: 40px;
+
+      
+  }
+
+  .flex-container[value = "JobTitleAndDates"] {
+
+    display: flex;
+    justify-content: space-between; 
+}
+
+.flex-container[value = "steps"]{
+     display: flex;
+    justify-content: space-between; 
+}
+
+.step1Card{
+
+    color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: grey;
+      border:0px solid mediumpurple;
+      border-radius: 120px;
+      position: fixed;
+      right: 250px;
+      top: 180px;
+      padding-top: 8px;
+    height: 40px;
+    width: 90px;
+
+    background-color: thistle;
+}
+
+.step2Card{
+
+    color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: grey;
+      border:0px solid mediumpurple;
+      border-radius: 120px;
+      position: fixed;
+      right: 250px;
+      top: 378px;
+      padding-top: 8px;
+    height: 40px;
+    width: 90px;
+
+    background-color: thistle;
+}
+
+.step3Card{
+
+    color: <%=theme==='Light' ? 'black': 'white' %>;
+      background-color: grey;
+      border:0px solid mediumpurple;
+      border-radius: 120px;
+      position: fixed;
+      right: 250px;
+      top: 576px;
+      padding-top: 8px;
+    height: 40px;
+    width: 90px;
+
+    background-color: thistle;
+}
 
 
 

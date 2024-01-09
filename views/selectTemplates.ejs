@@ -1,0 +1,52 @@
+<%- include('layout', {theme}) %>
+    <style>
+       
+    </style>
+
+    <body>
+
+        <main>
+            
+            <div class = "templates" >
+                <div class="flex-container" value="templates">
+                    
+                    <img style = "box-shadow: 4px 4px 8px Thistle; border-radius: 10px; " src="images/classicProfessional.png" alt="resume doodle" width="250" height="300">
+                    <img style = "box-shadow: 4px 4px 8px Thistle;border-radius: 10px; " src="images/modernProfessional.png" alt="resume doodle" width="250" height="300">
+                    <img style = "box-shadow: 4px 4px 8px Thistle; border-radius: 10px;"  src="images/modernStudent.png" alt="resume doodle" width="250" height="300">
+                </div>
+                    <br>
+                    <br>
+               <form action="/templates" method = "POST">
+                <div class="flex-container" value="buttonsTemplates">
+                    <button id="classicProfessional" type="submit" value="classicProfessional" name="template" class="button">Classic Professional</button>
+                    <button id="modernProfessional" type="submit" value="modernProfessional" name="template" class="button">Modern Professional</button>
+                    <button id="modernStudent" type="submit" value="modernStudent" name="template" class="button">Modern Student</button>
+
+                </div>
+                </form>
+                <br>
+                <br>
+
+                <button id="backButton" onclick="takeBack()" type="button" value="backTemplate" class="button">Back</button>
+</div>          
+
+           
+
+
+
+        </main>
+    </body>
+    <script defer>
+
+        function buildResume() {
+            window.location.href = "/profile";
+        }
+
+        function takeBack(){
+            window.location.href = "/homepage"
+        }
+
+       
+                
+    
+    </script>

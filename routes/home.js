@@ -1,21 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const session = require('express-session');
 
+const session = require('express-session');
 router.use(session({
   secret: 'your-secret-key', 
   resave: false,
   saveUninitialized: true,
 }));
 
-
-
-const path = require("path");
-
 var theme = "Light";
 
 const { getChatResponse } = require("./response");
-
 
 const UserDetails = require("./userDetails");
 const { passwordHashing } = require("./hashing");
@@ -25,27 +20,7 @@ const secretKey = passwordHashing("password");
 
 const cookie = require('cookie');
 
-const checkJWT = (req, res, next) => {
-  const token = req.headers['Authorization'];
-    // const token  = req.token;
-    console.log(token);
-  if (!token) {
-    console.log("no token")
-     res.redirect("/signup");
-     return;
-  }
-  try {
-    const decoded = jwt.verify(token, secretKey);
-    console.log("token")
-
-    req.user = decoded;
-    next();
-    return res.redirect("/resumePDF")
-  } catch (error) {
-    return res.status(400).send('Invalid Token.');
-  }
-};
-
+var template = "classicProfessional"
 
 router.get("/", function (req, res) {
     res.redirect("/homepage")
@@ -73,6 +48,7 @@ router.post("/profile", function(req,res){
         userName: FullName,
         emailID: EmailID
     }
+    console.log(req.session.profile)
    
         response.success = true;
         res.json(response);
@@ -94,6 +70,7 @@ router.post("/basics", function(req,res){
         phoneNumber: req.body.PhoneNumber,
         background: req.body.background
     }; 
+    console.log( req.session.basics)
     res.redirect("/skills")
 });
 
@@ -108,6 +85,13 @@ router.get("/addExperience", function(req,res){
 
 router.post("/addExperience", function(req,res){
      req.session.experience = req.session.experience || [];
+        var endDate;
+    if (req.body.checkbox === 'on') {
+            endDate = {month: "Present", year:""};
+     }
+     else{
+        endDate = {month: req.body.monthsED, year: req.body.yearsED};
+     }
 
     const experience = {
         jobTitle : req.body.JobTitle,
@@ -116,7 +100,7 @@ router.post("/addExperience", function(req,res){
         state: req.body.State,
         city: req.body.City,
         startDate: {month: req.body.monthsSD, year: req.body.yearsSD},
-        endDate: {month: req.body.monthsED, year: req.body.yearsED},
+        endDate: endDate,
         achievements: req.body.Achievements
 
     };
@@ -139,6 +123,12 @@ router.get("/addEducation", function(req,res){
 router.post("/addEducation", function(req, res){
     req.session.education = req.session.education || [];
 
+    if (req.body.checkbox === 'on') {
+            endDate = {month: req.body.monthsED, year:req.body.yearsED +" (Expected)"};
+     }
+     else{
+        endDate = {month: req.body.monthsED, year: req.body.yearsED};
+     }
     const education = {
         schoolName: req.body.SchoolName,
         degree: req.body.Degree,
@@ -146,11 +136,12 @@ router.post("/addEducation", function(req, res){
         country: req.body.Country,
         city: req.body.City,
         startDate: { month: req.body.monthsSD, year: req.body.yearsSD },
-        endDate: { month: req.body.monthsED, year: req.body.yearsED },
+        endDate: endDate,
         achievements: req.body.Achievements
     };
 
     req.session.education.push(education);
+    console.log(eq.session.education)
     console.log(req.session.education);
     
     res.render("educationHistory", { theme, educationList: req.session.education });
@@ -159,6 +150,7 @@ router.post("/addEducation", function(req, res){
 router.get("/download", function(req,res){
     res.render("download", {theme})
 });
+
 router.post("/download", function(req,res){
    res.redirect("/resumePDF")
 
@@ -197,7 +189,7 @@ router.post("/signup", async function (req, res) {
 
         res.setHeader('Set-Cookie', cookie.serialize('Authorization', token, {
             httpOnly: true,
-            maxAge: 60, // Max age in seconds, adjust as needed
+            maxAge: 60 *60, // Max age in seconds, adjust as needed
             path: '/', // Path for which the cookie is valid
             // secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
             sameSite: 'Strict', // Adjust as needed
@@ -236,13 +228,13 @@ router.post("/login", async function (req, res) {
 
 
         const token = jwt.sign({ userId: user._id }, passwordHashing("password"), {
-        expiresIn: '1m',});
+        expiresIn: '1h',});
 
         response.success = true;
 
         res.setHeader('Set-Cookie', cookie.serialize('Authorization', token, {
             httpOnly: true,
-            maxAge: 60, // Max age in seconds, adjust as needed
+            maxAge: 60* 60, // Max age in seconds, adjust as needed
             path: '/', // Path for which the cookie is valid
             // secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
             sameSite: 'Strict', // Adjust as needed
@@ -286,26 +278,18 @@ router.get("/resumePDF",  function (req, res) {
         console.log("Token found");
 
         req.user = decoded;
-         var profile = req.session.profile || "";
-    var basics = req.session.basics || "";
-    var experience = req.session.experiences || "";
-    var education = req.session.education || "";
-    var skills = req.session.skills || "";
-        res.render("modernProfessional", { theme, profile, basics , experience, education, skills});
+        var profile = req.session.profile || "";
+        var basics = req.session.basics || "";
+        var experiences = req.session.experience || "";
+        var education = req.session.education || "";
+        var skills = req.session.skills || "";
+        console.log(experiences)
+        res.render("modernProfessional", { theme, profile, basics , experiences, education, skills});
     } catch (error) {
         return res.status(400).send('Invalid Token.');
     }
 });
-    // var profile = req.session.profile || "";
-    // var basics = req.session.basics || "";
-    // var experience = req.session.experiences || "";
-    // var education = req.session.education || "";
-    // var skills = req.session.skills || "";
 
-
-    // res.render("modernProfessional", { theme, profile, basics , experience, education, skills});
-
-// });
 
 router.post("/resumePDF", function (req, res) {
     
@@ -320,10 +304,25 @@ router.get("/skills", function (req, res) {
 });
 
 router.post("/skills", function (req, res) {
+    console.log(req.body.skills)
 
     req.session.skills = { skills : req.body.skills };
+    console.log(req.session.skills);
     
     res.redirect("/workHistory");
+
+});
+
+router.get("/templates", function (req, res) {
+    
+    res.render("selectTemplates", { theme});
+
+});
+
+router.post("/templates", function (req, res) {
+    template = req.body.template;
+
+    res.redirect("/profile")
 
 });
 
