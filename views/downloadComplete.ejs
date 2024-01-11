@@ -1,0 +1,55 @@
+<%- include('layout',{theme}) %>
+
+
+    <body>
+        <main>
+
+
+
+<h3>your resume has been sucessfully downloaded</h3>
+
+
+
+        </main>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer>
+
+        function takeBack() {
+            window.location.href = "/templates"
+        }
+
+        $(document).ready(function () {
+
+
+            $("#nextButton").on("click", function (event) {
+                event.preventDefault();
+
+                // Make an AJAX POST request to /signup
+                var name = $("input[name='FullName']").val();
+                var email = $("input[name='EmailID']").val();
+
+                // Make an AJAX POST request to /signup
+                $.post("/profile", { FullName: name, EmailID: email })
+                    .done(function (response) {
+                        // Handle the response here
+                        if (response.error) {
+                            // Display error message in the HTML
+                            $("#errorMessageContainer").text(response.error);
+
+                        } else if (response.success) {
+                            // Redirect to homepage on success
+                            window.location.href = "/basics";
+                        }
+                    })
+                    .fail(function (error) {
+                        console.error(error);
+                    });
+            });
+        });
+
+
+
+
+
+    </script>

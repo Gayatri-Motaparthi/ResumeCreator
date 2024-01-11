@@ -540,7 +540,7 @@ input[name="City"] {
 
 .card[value = "addExperience"] {
   width: 850px;
-  height: 930px;
+  height: 950px;
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
@@ -1212,8 +1212,8 @@ input[name="State"] {
 }
 
 .card[value = "resume"]{
-     height:297mm;
-    width:210mm;
+     height:auto;
+    width:auto;
   border: 3px solid <%=theme==='Light' ? 'black': 'white' %>;
   border-radius: 10px;
   overflow: hidden;
@@ -1236,16 +1236,12 @@ input[name="State"] {
 
 .card-content[value = "resume"] p1 {
      color: <%=theme==='Light' ? 'black': 'white' %>;
-      
       font-size: 18pt;
-      align-items: center;
-      text-align: center;
-
+      font-weight:bold;
 }
 
 .card-content[value = "resume"] p2 {
      color: <%=theme==='Light' ? 'black': 'white' %>;
-  
       font-size:11pt;
       align-items: center;
       text-align: center;
@@ -1254,24 +1250,33 @@ input[name="State"] {
 
 .card-content[value = "resume"] p3 {
      color: <%=theme==='Light' ? 'black': 'white' %>;
-  
       font-size:11pt;
-     
       text-align: justify;
 
 }
 
 .card-content[value = "resume"] p4 {
      color: <%=theme==='Light' ? 'black': 'white' %>;
-  
       font-size:14pt;
+      font-weight: bold;
 
 }
 
 .card-content[value = "resume"] p5 {
      color: <%=theme==='Light' ? 'black': 'white' %>;
-  
-      font-size:12pt;
+     font-weight:bold;
+      font-size:11pt;
+}
+
+.card-content[value = "resume"] p6 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+     font-weight:bold;
+      font-size:9.5pt;
+}
+.card-content[value = "resume"] p7 {
+     color: <%=theme==='Light' ? 'black': 'white' %>;
+     
+      font-size:11pt;
 }
 
 
@@ -1339,6 +1344,22 @@ input[name="State"] {
       
   }
 
+  .button[value="sendToMail"] {
+      color: <%=theme==='Light' ? 'white': 'black' %>;
+      background-color: mediumpurple;
+      font-weight:bold;
+       height: 40px;
+      width: 200px;
+      border:4px solid mediumpurple;
+      border-radius: 10px;
+        position: fixed;
+
+         top: 80px;
+        right: 40px;
+
+      
+  }
+
 
 .button[value="backResumePDF"] {
       color: <%=theme==='Light' ? 'black': 'white' %>;
@@ -1348,9 +1369,8 @@ input[name="State"] {
       width: 200px;
       border:1px solid <%=theme==='Light' ? 'black': 'white' %>;
       border-radius: 10px;
-        position: fixed;
-
-        top: 80px;
+    position: fixed;
+        top:10px;
         right: 40px;
 
       
@@ -1516,6 +1536,27 @@ input[name="State"] {
     width: 90px;
 
     background-color: thistle;
+}
+
+.checkbox{
+    margin-left: 430px;
+}
+
+.error{
+   margin-left: 388px;
+}
+
+.flex-container[value="resumeSkills"] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+   
+}
+
+
+.flex-container[value="resumeSkills"] li {
+  
+    padding-right: 30px;
 }
 
 

@@ -57,16 +57,28 @@
                             <p13>
                                 <select id="yearsED" onclick="generateYearsED()" name="yearsED" required></select>
                             </p13>
-                            <input type="checkbox" name = "checkbox">
-                            <p14 style="font-weight: normal; margin-right: 200px;">I expect to graduate this date</p14>
+                            <div class = "checkbox">
+                                <input type="checkbox" name = "checkbox">
+                                <p14 style="font-weight: normal;">I expect to graduate this date.</p14>
+                                
+                                
+                            </div>
+
+                            <div class = "error" style="font-weight: normal;" id="errorMessageContainer"></div>
+                            
                         </div>
                         <br>
-                        Achievements
-                        <br>
-                        <textarea value="Achievements" name="Achievements"></textarea>
-
-
-                    </p3>
+                </p3>
+          
+              
+                <p3>
+                    Achievements
+                    <br>
+                    <textarea value="Achievements" name="Achievements" placeholder="Enter each of your Achievement in new line." ></textarea>
+                
+                
+                
+                </p3>
                     <br><br>
                     <div class="flex-container" value="backAndNext">
                         <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
@@ -81,6 +93,9 @@
 
         </main>
     </body>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script defer>
 
         function generateMonthsSD() {
@@ -88,9 +103,9 @@
 
             for (let i = 1; i <= 12; i++) {
                 const monthOption = document.createElement('option');
-                const monthValue = i < 10 ? '0' + i : '' + i;
-                monthOption.value = monthValue;
-                monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
+   
+                monthOption.value = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });;
+                monthOption.text = monthOption.value;
                 monthsSelect.appendChild(monthOption);
             }
         }
@@ -99,9 +114,8 @@
 
             for (let i = 1; i <= 12; i++) {
                 const monthOption = document.createElement('option');
-                const monthValue = i < 10 ? '0' + i : '' + i;
-                monthOption.value = monthValue;
-                monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
+                monthOption.value = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });;
+                monthOption.text = monthOption.value;
                 monthsSelect.appendChild(monthOption);
             }
         }
@@ -114,7 +128,7 @@
             for (let year = 2024; year >= 1950; year--) {
                 const yearOption = document.createElement('option');
                 yearOption.value = year;
-                yearOption.text = year;
+                yearOption.text = yearOption.value;
                 yearsSelect.appendChild(yearOption);
             }
         }
@@ -124,7 +138,7 @@
             for (let year = 2034; year >= 1950; year--) {
                 const yearOption = document.createElement('option');
                 yearOption.value = year;
-                yearOption.text = year;
+                yearOption.text = yearOption.value;
                 yearsSelect.appendChild(yearOption);
             }
         }
@@ -132,6 +146,56 @@
         function takeBack(){
             window.location.href = "/educationHistory";
         }
+
+            $(document).ready(function () {
+
+
+                    $("#nextButton").on("click", function (event) {
+                        event.preventDefault();
+                        console.log("Next button clicked");
+                        const SchoolName = $("input[name='SchoolName']").val();
+                        const Degree = $("input[name='Degree']").val();
+                        const FieldOfStudy =  $("input[name='FieldOfStudy']").val();
+                        const Country= $("input[name='Country']").val();
+                        const City= $("input[name='City']").val();
+                        const Achievements= $("textarea[name='Achievements']").val();
+                        const monthsSD= $("#monthsSD").val();
+                        const yearsSD= $("#yearsSD").val();
+                        const monthsED= $("#monthsED").val();
+                        const yearsED= $("#yearsED").val();
+                        const checkbox = $("input[name='checkbox']").val();
+
+                        $.post("/addEducation", {
+                            SchoolName: SchoolName,
+                            Degree: Degree,
+                            FieldOfStudy: FieldOfStudy,
+                            Country:Country,
+                            City: City,
+                            Achievements: Achievements,
+                            monthsSD: monthsSD,
+                            yearsSD: yearsSD,
+                            monthsED: monthsED,
+                            yearsED: yearsED,
+                            checkbox: checkbox
+                        })
+                            .done(function (response) {
+                                // Handle the response here
+                                if (response.error) {
+                                    // Display error message in the HTML
+                                    $("#errorMessageContainer").text(response.error);
+
+                                } else if (response.success) {
+                                    // Redirect to homepage on success
+                                    window.location.href = "/educationHistory";
+                                }
+                            })
+                            .fail(function (error) {
+                                console.error(error);
+                            });
+                    });
+                });
+            
+
 
     </script>
 

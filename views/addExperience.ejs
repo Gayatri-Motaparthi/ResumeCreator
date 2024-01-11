@@ -56,12 +56,19 @@
                             <p13>
                                 <select id="yearsED" onclick="generateYearsED()" name="yearsED" ></select>
                             </p13>
-                            <input type = "checkbox" name = "checkbox"> <p14 style ="font-weight: normal;" >I currently work in this role</p14>
-                        </div>
+                                        <div class="checkbox">
+                                            <input type="checkbox" name="checkbox">
+                                            <p14 style="font-weight: normal;">I currently work in this role.</p14>
+                                        
+                                        
+                                        </div>
+                                        
+                                        <div class="error" style="font-weight: normal;" id="errorMessageContainer"></div>
                         <br>
+                        <p3>
                     Achievements
                         <br>
-                        <textarea value="Achievements" name="Achievements" ></textarea>
+                        <textarea value="Achievements" name="Achievements" placeholder="Enter each of your Achievement in new line." ></textarea>
 
                       
                        
@@ -80,6 +87,9 @@
 
         </main>
     </body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script defer>
 
          function generateMonthsSD() {
@@ -88,7 +98,7 @@
                 for (let i = 1; i <= 12; i++) {
                     const monthOption = document.createElement('option');
                     const monthValue = i < 10 ? '0' + i : '' + i; 
-                    monthOption.value = monthValue;
+                    monthOption.value = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });;
                     monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
                     monthsSelect.appendChild(monthOption);
                 }
@@ -99,7 +109,7 @@
                     for (let i = 1; i <= 12; i++) {
                         const monthOption = document.createElement('option');
                         const monthValue = i < 10 ? '0' + i : '' + i;
-                        monthOption.value = monthValue;
+                        monthOption.value = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });;
                         monthOption.text = new Date(2023, i - 1, 1).toLocaleString('default', { month: 'long' });
                         monthsSelect.appendChild(monthOption);
                     }
@@ -131,6 +141,57 @@
             function takeBack(){
                 window.location.href = "/workHistory"
             }
+
+
+    $(document).ready(function () {
+
+
+        $("#nextButton").on("click", function (event) {
+            event.preventDefault();
+            console.log("Next button clicked");
+            const jobTitle = $("input[name='JobTitle']").val();
+            const employer = $("input[name='Employer']").val();
+            const country = $("input[name='CountryExperience']").val();
+            const state = $("input[name='State']").val();
+            const city = $("input[name='City']").val();
+             const achievements = $("textarea[name='Achievements']").val(); // Use 'textarea' and 'name'
+            const monthSD = $("#monthsSD").val(); // Use 'select' and 'name'
+            const yearSD = $("select[name='yearsSD']").val(); // Use 'select' and 'name'
+            const monthED = $("select[name='monthsED']").val(); // Use 'select' and 'name'
+            const yearED = $("select[name='yearsED']").val();
+            const checkbox = $("input[name='checkbox']").val();
+
+            $.post("/addExperience",  {
+                JobTitle: jobTitle,
+                Employer: employer,
+                CountryExperience: country,
+                State: state,
+                City: city,
+                Achievements: achievements,
+                monthsSD: monthSD,
+                yearsSD: yearSD,
+                monthsED: monthED,
+                yearsED: yearED,
+                checkbox: checkbox
+            })
+                .done(function (response) {
+                    // Handle the response here
+                    if (response.error) {
+                        // Display error message in the HTML
+                        $("#errorMessageContainer").text(response.error);
+
+                    } else if (response.success) {
+                        // Redirect to homepage on success
+                        window.location.href = "/workHistory";
+                    }
+                })
+                .fail(function (error) {
+                    console.error(error);
+                });
+        });
+    });
+
+
 
           
         </script>

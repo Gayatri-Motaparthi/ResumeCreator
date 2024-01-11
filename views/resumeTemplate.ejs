@@ -1,0 +1,313 @@
+<%- include('layout', {theme}) %>
+
+    <head>
+<script src="path/to/html2pdf.bundle.js"></script>
+<script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+    </head>
+
+    <body>
+        <button onclick="downloadAsPDF()" class="button" value="download">Download</button>
+        <button onclick="takeBack()" class="button" value="backResumePDF">Back</button>
+        <button id = "sendMail" class="button" type="submit" value="sendToMail">Send to mail</button>
+        <main>
+           
+            
+
+            <div class="card" value="resume">
+                <div id="resume" class="card-content" value="resume">
+                    <% if (template == "classicProfessional"){%>
+                        <p1 style="   align-items: right;
+                              text-align: right;">
+                            <%= profile.userName %>
+                        </p1>
+                        <p2 style="   align-items: right;
+                              text-align: right;">
+                            <%= profile.emailID %> | <%= basics.phoneNumber %>
+                                    <br>
+                                    <%= basics.city %>, <%= basics.country %>, <%= basics.zip %>
+                        </p2>
+                    <%} else {%>
+                        <p1 style="   align-items: center;
+      text-align: center;">
+                            <%= profile.userName %>
+                        </p1>
+                        <p2>
+                            <%= profile.emailID %> | <%= basics.phoneNumber %>
+                                    <br>
+                                    <%= basics.city %>, <%= basics.country %>, <%= basics.zip %>
+                        </p2>
+                        <br>
+                        <p3>
+                            <%= basics.background %>
+                        </p3>
+                        <br>
+                    <%}%>
+                    
+                    
+                <p4>Skills</p4>
+                <p3 >
+                    <div class="flex-container" value="resumeSkills">
+                        <% if (skills.skills != undefined) { %>
+             
+                        <% for (let i=0; i < skills.skills.length; i++) { %>
+                            <li>
+                                <%= skills.skills[i] %>
+                            </li>
+                            <% } %>
+                            <% } %>
+                 
+                    </div>
+                </p3>
+                        <br>
+                    
+                      <% if (template === "modernStudent"){%>
+
+
+                        <p4>Education</p4>
+                        
+                        <% if (education.length> 0) { %>
+                            <% for (let i=0; i < education.length; i++) { %>
+                                <div>
+                                    <div class="flex-container" value="JobTitleAndDates">
+                                        <p5>
+                                            <%= education[i].degree %> - <%= education[i].fieldOfStudy %>
+                                        </p5>
+                        
+                                        <p6>
+                                            <%= education[i].startDate.month %>
+                                                <%= education[i].startDate.year %> -
+                                                    <%=education[i].endDate.month %>
+                                                        <%= education[i].endDate.year %>
+                                        </p6>
+                                    </div>
+                        
+                                    <p6>
+                                        <%= education[i].schoolName %>, <%=education[i].city %> , <%= education[i].country %>
+                                    </p6>
+                        
+                                    <br>
+                        
+                                    <% if (education[i].achievements.length> 0) { %>
+                                        <% for (let x=0; x < education[i].achievements.length; x++) { %>
+                        
+                                            <p3>
+                                                <li>
+                                                    <%= education[i].achievements[x] %>
+                                                </li>
+                                            </p3>
+                        
+                        
+                        
+                                            <% } %>
+                        
+                        
+                                                <% } %>
+                                </div>
+                                <br>
+                                <% } %>
+                        
+                        
+                                    <% } %>
+                                       
+                        
+                        
+                                                                                     
+                            <p4>Experience</p4>
+                            <br>
+                            <% if (experiences.length> 0) { %>
+                                <% for (let i=0; i < experiences.length; i++) { %>
+                            
+                                    <div>
+                                        <div class="flex-container" value="JobTitleAndDates">
+                                            <p5>
+                                                <%= experiences[i].jobTitle %>
+                            
+                                            </p5>
+                            
+                                            <p6>
+                                                <%= experiences[i].startDate.month %>
+                                                    <%= experiences[i].startDate.year %> - <%= experiences[i].endDate.month %>
+                                                            <%= experiences[i].endDate.year %>
+                                            </p6>
+                                        </div>
+                            
+                                        <p6>
+                                            <%= experiences[i].employer %>, <%= experiences[i].city %> , <%= experiences[i].country %>
+                                        </p6>
+                                        <br>
+                                        <% if (experiences[i].achievements.length> 0) { %>
+                                            <% for (let x=0; x < experiences[i].achievements.length; x++) { %>
+                            
+                                                <p3>
+                                                    <li>
+                                                        <%= experiences[i].achievements[x] %>
+                                                    </li>
+                                                </p3>
+                            
+                            
+                            
+                                                <% } %>
+                            
+                            
+                                                    <% } %>
+                                                        <br>
+                                    </div>
+                                    <%}%>
+                                    <%}%>
+
+                                
+                            
+                                        
+
+                        <%} else {%>
+                            
+                            <p4>Experience</p4>
+                            <br>
+                            <% if (experiences.length> 0) { %>
+                                <% for (let i=0; i < experiences.length; i++) { %>
+                            
+                                    <div>
+                                        <div class="flex-container" value="JobTitleAndDates">
+                                            <p5>
+                                                <%= experiences[i].jobTitle %>
+                            
+                                            </p5>
+                            
+                                            <p6>
+                                                <%= experiences[i].startDate.month %>
+                                                    <%= experiences[i].startDate.year %> - <%= experiences[i].endDate.month %>
+                                                            <%= experiences[i].endDate.year %>
+                                            </p6>
+                                        </div>
+                            
+                                        <p6>
+                                            <%= experiences[i].employer %>, <%= experiences[i].city %> , <%= experiences[i].country %>
+                                        </p6>
+                                        <br>
+                                        <% if (experiences[i].achievements.length> 0) { %>
+                                            <% for (let x=0; x < experiences[i].achievements.length; x++) { %>
+                            
+                                        <p3><li>
+                                            <%= experiences[i].achievements[x] %>
+                                        </li></p3>
+                                        
+                                    
+                                   
+                                    <% } %>
+                                    
+                            
+                                    <% } %>
+                                    <br>
+                                    </div>
+                                    <% } %>
+                                    
+                                    
+                                        <% } %>
+    
+                                <p4>Education</p4>
+
+                                <% if (education.length> 0) { %>
+                                    <% for (let i=0; i < education.length; i++) { %>
+                                        <div>
+                                            <div class="flex-container" value="JobTitleAndDates">
+                                                <p5>
+                                                    <%= education[i].degree %> - <%=
+                                                            education[i].fieldOfStudy %></p5>
+                                                
+                                                <p6>
+                                                    <%= education[i].startDate.month %>
+                                                        <%= education[i].startDate.year %> -
+                                                            <%=education[i].endDate.month %>
+                                                                <%= education[i].endDate.year %>
+                                                </p6>
+                                            </div>
+                                         
+                                            <p6>
+                                                <%= education[i].schoolName %>, <%=education[i].city %> , <%= education[i].country %>
+                                            </p6>
+
+                                            <br>
+
+                                            <% if (education[i].achievements.length> 0) { %>
+                                                <% for (let x=0; x < education[i].achievements.length; x++) { %>
+                                            
+                                                    <p3>
+                                                        <li>
+                                                            <%= education[i].achievements[x] %>
+                                                        </li>
+                                                    </p3>
+                                            
+                                            
+                                            
+                                                    <% } %>
+                                            
+                                            
+                                                        <% } %>
+                                        </div>
+                                        <br>
+                                        <% } %>
+
+
+                                            <% } %>
+                                        <%}%>
+                    
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </main>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer>
+
+
+        function downloadAsPDF() {
+    
+                const element = document.getElementById("resume");
+
+                const filename = "YourName-Resume";
+                html2pdf().from(element).save(filename);
+
+        }
+
+        function takeBack() {
+            window.location.href = "/download";
+        }
+
+          $(document).ready(function () {
+
+
+                $("#sendMail").on("click", function (event) {
+                    event.preventDefault();
+
+                    // Make an AJAX POST request to /signup
+                    const resumeDiv = document.getElementById('resume');
+
+                    // Make an AJAX POST request to /signup
+                    $.post("/resumePDF", { resume:resumeDiv.innerHTML})
+                        .done(function (response) {
+                            // Handle the response here
+                            if (response.error) {
+                                // Display error message in the HTML
+                                $("#errorMessageContainer").text(response.error);
+
+                            } else if (response.success) {
+                                // Redirect to homepage on success
+                                window.location.href = "/downloadComplete";
+                            }
+                        })
+                        .fail(function (error) {
+                            console.error(error);
+                        });
+                });
+            });
+
+        
+
+       
+    </script>

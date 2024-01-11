@@ -19,8 +19,24 @@ const jwt = require('jsonwebtoken');
 const secretKey = passwordHashing("password");
 
 const cookie = require('cookie');
+const formatInput = require("./formatInput");
 
-var template = "classicProfessional"
+const {checkDates} = require("./checkDates")
+
+const {sendMail} = require("./sendMail")
+
+const nodemailer = require('nodemailer');
+const dotenv = require('dotenv');
+const fs = require('fs');
+const pdf = require('html-pdf');
+
+
+
+dotenv.config();
+
+
+var template ;
+
 
 router.get("/", function (req, res) {
     res.redirect("/homepage")
@@ -70,7 +86,11 @@ router.post("/basics", function(req,res){
         phoneNumber: req.body.PhoneNumber,
         background: req.body.background
     }; 
-    console.log( req.session.basics)
+   
+
+    let background  = (formatInput({info: req.session.basics.background}));
+    req.session.basics.background = background
+    console.log(req.session.basics)
     res.redirect("/skills")
 });
 
@@ -83,31 +103,69 @@ router.get("/addExperience", function(req,res){
     res.render("addExperience", {theme})
 });
 
-router.post("/addExperience", function(req,res){
-     req.session.experience = req.session.experience || [];
-        var endDate;
-    if (req.body.checkbox === 'on') {
-            endDate = {month: "Present", year:""};
-     }
-     else{
-        endDate = {month: req.body.monthsED, year: req.body.yearsED};
-     }
+router.post("/addExperience", function (req, res) {
+    try {
+        var response = {}
 
-    const experience = {
-        jobTitle : req.body.JobTitle,
-        employer: req.body.Employer,
-        country: req.body.CountryExperience,
-        state: req.body.State,
-        city: req.body.City,
-        startDate: {month: req.body.monthsSD, year: req.body.yearsSD},
-        endDate: endDate,
-        achievements: req.body.Achievements
+        // Check if the checkbox is checked
+        if (req.body.checkbox === 'on') {
+            // If checked, save the data without date validation
+            console.log(req.body.Achievements)
+            const experiences = {
+                jobTitle: req.body.JobTitle,
+                employer: req.body.Employer,
+                country: req.body.CountryExperience,
+                state: req.body.State,
+                city: req.body.City,
+                startDate: { month: req.body.monthsSD, year: req.body.yearsSD },
+                endDate: { month: "Present", year: "" },
+                achievements: req.body.Achievements
+            };
 
-    };
+            let experience = (formatInput({ info: experiences.achievements }));
+            experiences.achievements = experience;
 
-    req.session.experience.push(experience);
-    console.log(req.session.experience);
-    res.render("workHistory", {theme , experiences: req.session.experience})
+
+            req.session.experience = req.session.experience || [];
+            req.session.experience.push(experiences);
+            console.log(req.session.experience);
+
+            response.success = true;
+            res.json(response);
+        } else {
+            // If not checked, proceed with date validation
+            if (checkDates({ month: req.body.monthsSD, year: req.body.yearsSD }, { month: req.body.monthsED, year: req.body.yearsED })) {
+                const endDate = { month: req.body.monthsED, year: req.body.yearsED };
+
+                const experiences = {
+                    jobTitle: req.body.JobTitle,
+                    employer: req.body.Employer,
+                    country: req.body.CountryExperience,
+                    state: req.body.State,
+                    city: req.body.City,
+                    startDate: { month: req.body.monthsSD, year: req.body.yearsSD },
+                    endDate: endDate,
+                    achievements: req.body.Achievements
+                };
+
+                let experience = (formatInput({ info: experiences.achievements }));
+                experiences.achievements = experience;
+                
+                req.session.experience = req.session.experience || [];
+                req.session.experience.push(experiences);
+                console.log(req.session.experience);
+
+                response.success = true;
+                res.json(response);
+            } else {
+                response.error = "Your end date can't be before the start date";
+                res.json(response);
+            }
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 });
 
 router.get("/educationHistory", function(req,res){
@@ -121,30 +179,50 @@ router.get("/addEducation", function(req,res){
 });
 
 router.post("/addEducation", function(req, res){
-    req.session.education = req.session.education || [];
 
-    if (req.body.checkbox === 'on') {
-            endDate = {month: req.body.monthsED, year:req.body.yearsED +" (Expected)"};
-     }
-     else{
-        endDate = {month: req.body.monthsED, year: req.body.yearsED};
-     }
-    const education = {
-        schoolName: req.body.SchoolName,
-        degree: req.body.Degree,
-        fieldOfStudy: req.body.FieldOfStudy,
-        country: req.body.Country,
-        city: req.body.City,
-        startDate: { month: req.body.monthsSD, year: req.body.yearsSD },
-        endDate: endDate,
-        achievements: req.body.Achievements
-    };
+    try{
+        var response = {}
 
-    req.session.education.push(education);
-    console.log(eq.session.education)
-    console.log(req.session.education);
-    
-    res.render("educationHistory", { theme, educationList: req.session.education });
+        if (checkDates({month: req.body.monthsSD, year: req.body.yearsSD}, {month: req.body.monthsED, year: req.body.yearsED})){
+                
+            req.session.education = req.session.education || [];
+
+            if (req.body.checkbox === 'on') {
+                    endDate = {month: req.body.monthsED, year:req.body.yearsED +" (Expected)"};
+            }
+            else{
+                endDate = {month: req.body.monthsED, year: req.body.yearsED};
+            }
+            const educationList = {
+                schoolName: req.body.SchoolName,
+                degree: req.body.Degree,
+                fieldOfStudy: req.body.FieldOfStudy,
+                country: req.body.Country,
+                city: req.body.City,
+                startDate: { month: req.body.monthsSD, year: req.body.yearsSD },
+                endDate: endDate,
+                achievements: req.body.Achievements
+            };
+
+            let education  = (formatInput({info: educationList.achievements}));
+            educationList.achievements =  education;
+
+            req.session.education.push(educationList);
+            console.log(req.session.education);
+
+            response.success = true;
+            res.json(response);
+        }else{
+                response.error = "Your end date can't be before the start date";
+                res.json(response);
+            }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+     
+        
+
 });
 
 router.get("/download", function(req,res){
@@ -255,13 +333,16 @@ router.get("/jobDescription", function (req, res) {
 
 router.post("/jobDescription", function (req, res) {
     
-    req.session.jobDescription = { jobDescription : req.body.jobDescription}
+
+    let jd  = (formatInput({info: req.body.jobDescription}));
+    req.session.jobDescription = jd;
+
     console.log(req.session.jobDescription)
     res.redirect("/download")
 
 });
 
-router.get("/resumePDF",  function (req, res) {
+router.get("/resumePDF", async function (req, res) {
 
     const cookies = cookie.parse(req.headers.cookie || '');
 
@@ -283,20 +364,61 @@ router.get("/resumePDF",  function (req, res) {
         var experiences = req.session.experience || "";
         var education = req.session.education || "";
         var skills = req.session.skills || "";
-        console.log(experiences)
-        res.render("modernProfessional", { theme, profile, basics , experiences, education, skills});
+
+        // var response = await getChatResponse(skills,basics,experiences,education,req.session.jobDescription)
+        // console.log(response)
+        res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
+       
+        
+
+
+        
     } catch (error) {
-        return res.status(400).send('Invalid Token.');
+        return console.log(error)
     }
 });
 
 
 router.post("/resumePDF", function (req, res) {
+
+    const resume = req.body.resume;
+    console.log(resume);
+
+    sendMail();
+
+      
     
-    res.redirect("/resumePDF");
+    
+    // sendMail(resume);
+
+    var response = {};
+    response.success = true;
+    res.json(response)
 
 });
 
+
+router.get("/sendMail", async function (req, res) {
+
+    var profile = req.session.profile || "";
+        var basics = req.session.basics || "";
+        var experiences = req.session.experience || "";
+        var education = req.session.education || "";
+        var skills = req.session.skills || "";
+
+        // var response = await getChatResponse(skills,basics,experiences,education,req.session.jobDescription)
+        // console.log(response)
+        res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
+       
+
+});
+
+
+router.get("/downloadComplete", function (req, res) {
+    
+    res.render("downloadComplete", {theme});
+
+});
 router.get("/skills", function (req, res) {
     
     res.render("skills", { theme});
@@ -304,9 +426,28 @@ router.get("/skills", function (req, res) {
 });
 
 router.post("/skills", function (req, res) {
-    console.log(req.body.skills)
 
-    req.session.skills = { skills : req.body.skills };
+    let skills  = (formatInput({info: req.body.skills}));
+    console.log(skills);
+    var skillsArray = [];
+    for (let i = 0; i < skills.length; i++){
+        if (skills[i].includes(",")){
+            skillsFormatted = skills[i].split(',').map(skill => skill.trim());
+            for (let x = 0; x < skillsFormatted.length; x++){
+            
+                skillsArray.push(skillsFormatted[x])
+
+            }
+        }
+        else{
+            skillsArray.push(skills[i].trim())
+        }
+       
+    }
+
+    console.log(skillsArray)
+
+    req.session.skills = { skills :skillsArray};
     console.log(req.session.skills);
     
     res.redirect("/workHistory");
