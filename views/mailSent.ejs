@@ -1,0 +1,39 @@
+<%- include('layout',{theme}) %>
+
+
+    <body>
+        <main>
+
+            <div class="downloadComplete">
+                <img src="images/success.png" alt="resume doodle" width="400" height="300" style="padding-top: 10px;">
+                <br>
+
+                <h3>Your resume has been sent to your mail!</h3>
+
+                <br>
+
+                <button type="button" onclick="goToHomePage()" value="gotoHomepage" class="button">Go to
+                    Homepage</button>
+                <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+
+
+
+
+        </main>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script defer>
+
+        function takeBack() {
+            window.location.href = "/resumePDF"
+        }
+        function goToHomePage() {
+            window.location.href = "/homepage"
+        }
+
+
+
+
+
+
+    </script>

@@ -266,13 +266,14 @@
     <script defer>
 
 
-        function downloadAsPDF() {
+        async function downloadAsPDF() {
     
                 const element = document.getElementById("resume");
 
                 const filename = "YourName-Resume";
-                html2pdf().from(element).save(filename);
+                await html2pdf().from(element).save(filename);
 
+                window.location.href = "/downloadComplete";
         }
 
         function takeBack() {
@@ -298,7 +299,7 @@
 
                             } else if (response.success) {
                                 // Redirect to homepage on success
-                                window.location.href = "/downloadComplete";
+                                window.location.href = "/mailSent";
                             }
                         })
                         .fail(function (error) {

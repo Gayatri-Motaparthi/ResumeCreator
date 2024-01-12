@@ -4,9 +4,17 @@
     <body>
         <main>
 
+<div class = "downloadComplete" >
+<img src="images/success.png" alt="resume doodle" width="400" height="300" style="padding-top: 10px;" >
+<br>
 
+<h3>Your resume has been sucessfully downloaded!</h3>
 
-<h3>your resume has been sucessfully downloaded</h3>
+<br>
+
+    <button type="button" onclick="goToHomePage()" value="gotoHomepage" class="button">Go to Homepage</button>
+    <button id="backButton" onclick="takeBack()" type="button" value="back" class="button">Back</button>
+    
 
 
 
@@ -16,38 +24,13 @@
     <script defer>
 
         function takeBack() {
-            window.location.href = "/templates"
+            window.location.href = "/resumePDF"
         }
+        function goToHomePage() {
+                window.location.href = "/homepage"
+            }
 
-        $(document).ready(function () {
-
-
-            $("#nextButton").on("click", function (event) {
-                event.preventDefault();
-
-                // Make an AJAX POST request to /signup
-                var name = $("input[name='FullName']").val();
-                var email = $("input[name='EmailID']").val();
-
-                // Make an AJAX POST request to /signup
-                $.post("/profile", { FullName: name, EmailID: email })
-                    .done(function (response) {
-                        // Handle the response here
-                        if (response.error) {
-                            // Display error message in the HTML
-                            $("#errorMessageContainer").text(response.error);
-
-                        } else if (response.success) {
-                            // Redirect to homepage on success
-                            window.location.href = "/basics";
-                        }
-                    })
-                    .fail(function (error) {
-                        console.error(error);
-                    });
-            });
-        });
-
+    
 
 
 

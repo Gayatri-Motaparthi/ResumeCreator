@@ -23,7 +23,7 @@ const formatInput = require("./formatInput");
 
 const {checkDates} = require("./checkDates")
 
-const {sendMail} = require("./sendMail")
+const {sendMail} = require("./test")
 
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
@@ -367,8 +367,10 @@ router.get("/resumePDF", async function (req, res) {
 
         // var response = await getChatResponse(skills,basics,experiences,education,req.session.jobDescription)
         // console.log(response)
-        res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
+        // res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
        
+        res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
+
         
 
 
@@ -408,7 +410,15 @@ router.get("/sendMail", async function (req, res) {
 
         // var response = await getChatResponse(skills,basics,experiences,education,req.session.jobDescription)
         // console.log(response)
-        res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
+        res.render("resumeToMail", { theme, profile, basics , experiences, education, skills , template});
+       
+
+});
+
+router.get("/mailSent", async function (req, res) {
+
+    
+        res.render("mailSent", { theme});
        
 
 });

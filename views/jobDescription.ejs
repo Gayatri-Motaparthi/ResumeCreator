@@ -1,5 +1,5 @@
 <%- include('layout', {theme}) %>
-
+<body><%- include('progressBar',{theme , state1:"completed", state2:"completed",state3:"completed",state4:"completed",state5:"completed",state6:"current" }) %>
     <main>
         <form name="jobDescription" action="/jobDescription" method="post">
             <div class="card" value="jobDescription">
@@ -9,7 +9,7 @@
 
                     <p1>
                         
-                    To create a personalized resume for you, please provide a brief description of the job you are applying to
+                    To create a personalized resume for you, please provide a brief description of the job you are planning to apply.
                     </p1>
                     <br>
                     <textarea value = "jobDescription" name = "jobDescription" required></textarea>
@@ -36,7 +36,7 @@
         </div>
 
     </main>
-
+</body>
     
     <script defer>
         function goToDownload() {

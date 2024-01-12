@@ -5,6 +5,11 @@ const db = require('./database/db');
 const bodyParser = require("body-parser");
 const session = require('express-session');
 
+//mail
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('view engine', 'ejs');
+
 app.use(session({
     secret: 'your-secret-key',
     resave: true,

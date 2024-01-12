@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: "swifthireresume@gmail.com",
-        pass: "********",
+        pass: "ouea dleg ovjt espr",
     },
 });
 
@@ -26,10 +26,10 @@ async function sendMail() {
     const page = await browser.newPage();
 
     // Navigate to the URL containing the resume content
-    await page.goto('http://127.0.0.1:3000/sendMail');  // Replace with the actual URL
+    await page.goto('http://127.0.0.1:3000/sendMail'); 
 
     // Wait for the resume content to load
-    await page.waitForSelector('#resume');
+    await page.waitForSelector('#resume', { timeout: 10000 });
 
     // // Get the HTML content of the div with ID "resume"
     // const resumeContent = await page.$eval('#resume', el => el.innerHTML);
@@ -50,11 +50,11 @@ async function sendMail() {
 
         let mailOptions = {
             from: 'swifthireresume@gmail.com',
-            to: 'userMailID@gmail.com',
+            to: 'gayatri.motaparthi@gmail.com',
             subject: 'Here is Your Resume',
             text: 'Resume Has Been generated',
             html: '<b>Heres Your Resume</b>',
-            attacshments: [
+            attachments: [
         {
           filename: 'resume.pdf',
           content: pdfBuffer,
@@ -67,7 +67,6 @@ async function sendMail() {
         await transporter.sendMail(mailOptions);
 
          console.log('Email sent successfully!');
-
     } catch (E) {
         console.log(E);
     }
