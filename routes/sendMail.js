@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: "swifthireresume@gmail.com",
-        pass: "ouea dleg ovjt espr",
+        pass: "xxxxx",
     },
 });
 
@@ -50,7 +50,7 @@ async function sendMail() {
 
         let mailOptions = {
             from: 'swifthireresume@gmail.com',
-            to: 'gayatri.motaparthi@gmail.com',
+            to: 'useremail@gmail.com,
             subject: 'Here is Your Resume',
             text: 'Resume Has Been generated',
             html: '<b>Heres Your Resume</b>',
