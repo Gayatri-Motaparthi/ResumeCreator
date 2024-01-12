@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: "swifthireresume@gmail.com",
-        pass: "ouea dleg ovjt espr",
+        pass: "xxxxxxxx",
     },
 });
 
@@ -39,7 +39,7 @@ async function sendMail() {
 
         console.log("Sending Email");
         transporter.sendMail({from: 'swifthireresume@gmail.com',
-            to: 'gayatri.motaparthi@gmail.com',
+            to: 'useremail@gmail.com',
             subject: 'test',
              text: temp.text,
         html:  temp.html});
