@@ -25,16 +25,11 @@ async function sendMail() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // Navigate to the URL containing the resume content
     await page.goto('http://127.0.0.1:3000/sendMail'); 
 
-    // Wait for the resume content to load
     await page.waitForSelector('#resume', { timeout: 10000 });
 
-    // // Get the HTML content of the div with ID "resume"
-    // const resumeContent = await page.$eval('#resume', el => el.innerHTML);
 
-    // Generate a PDF from the content
     const pdfBuffer = await page.pdf({
       format: 'A4',
       margin: {
