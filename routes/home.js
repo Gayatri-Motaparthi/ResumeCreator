@@ -267,10 +267,10 @@ router.post("/signup", async function (req, res) {
 
         res.setHeader('Set-Cookie', cookie.serialize('Authorization', token, {
             httpOnly: true,
-            maxAge: 60 *60, // Max age in seconds, adjust as needed
-            path: '/', // Path for which the cookie is valid
-            // secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
-            sameSite: 'Strict', // Adjust as needed
+            maxAge: 60 *60, 
+            path: '/', 
+
+            sameSite: 'Strict', 
         }));
 
         res.json(response);
@@ -312,10 +312,10 @@ router.post("/login", async function (req, res) {
 
         res.setHeader('Set-Cookie', cookie.serialize('Authorization', token, {
             httpOnly: true,
-            maxAge: 60* 60, // Max age in seconds, adjust as needed
-            path: '/', // Path for which the cookie is valid
-            // secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS in production
-            sameSite: 'Strict', // Adjust as needed
+            maxAge: 60* 60, 
+            path: '/', 
+         
+            sameSite: 'Strict',
         }));
 
         res.json(response);
@@ -365,14 +365,8 @@ router.get("/resumePDF", async function (req, res) {
         var education = req.session.education || "";
         var skills = req.session.skills || "";
 
-        // var response = await getChatResponse(skills,basics,experiences,education,req.session.jobDescription)
-        // console.log(response)
-        // res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
        
         res.render("resumeTemplate", { theme, profile, basics , experiences, education, skills , template});
-
-        
-
 
         
     } catch (error) {
@@ -387,11 +381,6 @@ router.post("/resumePDF", function (req, res) {
     console.log(resume);
 
     sendMail();
-
-      
-    
-    
-    // sendMail(resume);
 
     var response = {};
     response.success = true;
@@ -408,8 +397,6 @@ router.get("/sendMail", async function (req, res) {
         var education = req.session.education || "";
         var skills = req.session.skills || "";
 
-        // var response = await getChatResponse(skills,basics,experiences,education,req.session.jobDescription)
-        // console.log(response)
         res.render("resumeToMail", { theme, profile, basics , experiences, education, skills , template});
        
 
@@ -477,27 +464,5 @@ router.post("/templates", function (req, res) {
 
 });
 
-/*
-router.post("/homepage", async function (req, res) {
-    var question = req.body.inputbar;
-    questions.push(question);
 
-    try {
-        var response = await getChatResponse(question);
-        var content = response.data
-        answers.push(content);
-
-        res.render("homepage", { theme, questions, answers });
-    } catch (error) {
-        console.error(error);
-    }
-});
-
-
-router.get("/logout", async function (req, res) {
-    res.redirect("/")
-});
-
-
-*/
 module.exports = router;
