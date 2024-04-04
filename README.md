@@ -11,15 +11,16 @@ to the user for review. Users can then download their resumes in PDF format.
 
 ## Installation
 1. Clone the repository:
-   - git clone
+   - git clone https://github.com/Gayatri-Motaparthi/Resume_Builder.git
 2. Navigate to the project directory:
-   - cd
+   - cd Resume_Builder
 3. Install dependencies:
    - npm install express path body-parser express-session ejs cookie-parser sha256 jwt-simple dotenv fs html-pdf puppeteer mongoose
 
 ## Usage
 1. Start the server:
    - node server.js
+2. Open your web browser and navigate to http://127.0.0.1:3000 to access the resume builder application.
 
 
    
