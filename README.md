@@ -1,3 +1,3 @@
-ATS-Friendly Resume Creator Using AI
+Resume Creator 
 
 Templates - Build Classic Professional, Build Modern Professional, Build Modern Student
