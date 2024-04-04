@@ -19,7 +19,7 @@ to the user for review. Users can then download their resumes in PDF format.
 
 ## Usage
 1. Start the server:
-   - node server.js
+   - node app.js
 2. Open your web browser and navigate to http://127.0.0.1:3000 to access the resume builder application.
 
 
