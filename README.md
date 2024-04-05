@@ -1,8 +1,8 @@
 # Resume Builder with User Authentication
 
 ## Overview
-
-This project is a resume builder application that allows users to create professional resumes by providing personal 
+This project is an attempt to mimic the functionality and design of Jobscan - https://www.jobscan.co/rb/start in NodeJs. 
+This project allows users to create professional resumes by providing personal 
 details, skills, education, experience, and summary. Users can choose from different resume layouts, including Classic 
 Professional, Modern Professional, and Modern Student. The application utilizes Node.js and Express for the backend server, 
 MongoDB for database storage, and HTML/CSS for the user interface. User authentication is implemented using JWT to ensure 
